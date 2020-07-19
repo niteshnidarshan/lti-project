@@ -1,0 +1,50 @@
+<div class="container"> 
+    <div class="row mat-elevation-z0" style="height: auto; margin-top: 10px;">
+        <div class="col-md-12"> 
+            <mat-card class="card">
+                <mat-card-header>
+                <mat-card-title>Login</mat-card-title>
+                <mat-card-subtitle> </mat-card-subtitle>
+                </mat-card-header>
+                 
+                <!--Post Article stats-->
+                <mat-card-content>
+                <mat-card-title></mat-card-title>  
+                <form [formGroup]="loginFormGroup" (ngSubmit)="doLogin()" style="padding:5px;">
+                        <p>
+                            <mat-form-field class="login-width">
+                                <mat-label>Email</mat-label>
+                                <input matInput [formControl] = "email" placeholder="Ex: abc@xyz.com"> 
+                                <mat-error *ngIf="loginFormGroup.controls['email'].hasError('required')">Email required!</mat-error>
+                                <mat-error *ngIf="loginFormGroup.controls['email'].hasError('email')">
+                                    Invalid email!
+                                </mat-error>
+                            </mat-form-field> 
+                        </p>
+                        <p>
+                            <mat-form-field class="login-width">
+                                <mat-label>Password</mat-label>
+                                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="password"/>
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="loginFormGroup.controls['password'].hasError('required')">Password required!</mat-error>
+                            </mat-form-field>
+                        </p>
+                        <div class="col-md-12"  style="align-content: left;">
+                            <span matTooltip="Provide email password combination to login">
+                            <button type="submit" mat-raised-button [disabled]="!loginFormGroup.valid">
+                              <mat-icon color="accent">person</mat-icon>
+                              <span>Login</span>
+                              
+                            </button>
+                            </span>
+                            <span>&nbsp;<a color="accent" mat-button href="www.google.com">Reset password?</a></span>
+                          </div> 
+                </form>
+                </mat-card-content>
+                <mat-card-actions> 
+                    
+                </mat-card-actions>  
+            </mat-card>
+        </div>
+    </div> 
+</div> 

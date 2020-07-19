@@ -1,0 +1,33 @@
+.large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*margin-left: 16px;
+    margin-right: 16px;*/
+    width: fit-content;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  .text-full-width {
+    width: 100%;
+  }
+  .profile-card {
+    max-width: 400px; 
+  }
+  .row-appear{
+    margin: 2px;
+  }
+  .row-appear1{
+    margin-bottom: 18px;
+  }
+  mat-card-title{
+    font-size: medium;
+  }
+  .header{
+    width: 100%;
+    background-color: whitesmoke;
+  }
+button{
+  outline: none;
+} 
+ 

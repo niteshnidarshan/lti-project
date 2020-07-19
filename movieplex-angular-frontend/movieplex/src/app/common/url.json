@@ -1,0 +1,4 @@
+{
+    "base":"http://localhost:7790",
+    "getUserUrl":"/api/user/get/"
+}

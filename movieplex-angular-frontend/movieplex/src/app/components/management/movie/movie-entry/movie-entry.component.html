@@ -1,0 +1,156 @@
+<div class="container">
+    <form [formGroup]="movieAddForm" (ngSubmit)="addMovie()">
+    <div class="row large-box" style="width: 100%;">
+        
+    <div class="col-md-12">&nbsp;</div>
+        <div class="col-md-6">
+            
+                <p>
+                <mat-form-field class="text-full-width"  appearance="standard">
+                    <mat-label>Movie Name</mat-label>
+                    <input matInput placeholder="Movie Name" [formControl]="movieAddForm.controls['name']" [value]="movieAddForm.controls['name'].value | titlecase" required/>
+                    <mat-error *ngIf="movieAddForm.controls['name'].hasError('required')">
+                        Movie name is mandatory.
+                    </mat-error>
+                </mat-form-field> 
+                </p>
+            
+        </div>
+        <div class="col-md-6">
+            
+                <p>
+                <mat-form-field class="text-full-width"  appearance="standard">
+                    <mat-label>Category(Movie Genre)</mat-label>
+                    <mat-select [formControl]="movieAddForm.controls['category']" multiple>
+                        <mat-option *ngFor="let genre of movieCategories" [value]="genre">{{genre}}</mat-option>
+                    </mat-select> 
+                </mat-form-field>
+                </p>
+            
+        </div>
+
+        <div class="col-md-12">   
+            <p>
+                <mat-form-field class="text-full-width"  appearance="standard">
+                <mat-label>Cast</mat-label>
+                <input matInput placeholder="Cast names" [formControl]="movieAddForm.controls['casts']" />
+                </mat-form-field>
+            </p>
+        </div>
+
+        
+        <div class="col-md-6">
+            
+            <p> 
+                <mat-form-field class="text-full-width"  appearance="standard">
+                    <mat-label>Producer</mat-label>
+                    <input matInput placeholder="Producer names" [formControl]="movieAddForm.controls['producer']" />
+                </mat-form-field>
+            <p>
+
+        </div>
+        
+        <div class="col-md-6">
+            
+            <p>
+            <mat-form-field class="text-full-width" appearance="standard">
+            <mat-label>Director</mat-label>
+            <input matInput placeholder="Director names" [formControl]="movieAddForm.controls['director']"/>
+            </mat-form-field>
+            </p>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <p>
+            <mat-form-field class="text-full-width" appearance="standard">
+            <mat-label>Language</mat-label>
+            <input matInput placeholder="Movie language" [formControl]="movieAddForm.controls['language']"/>
+            </mat-form-field>
+            </p>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <p>
+            <mat-form-field class="text-full-width" appearance="standard">
+            <mat-label>Length</mat-label>
+            <input matInput type="number" placeholder="In minutes"  [formControl]="movieAddForm.controls['length']" />
+            </mat-form-field>
+            </p>
+
+        </div>
+
+        <div class="col-md-3">
+            
+            <p>
+            <mat-form-field class="text-full-width" appearance="standard">
+            <mat-label>imdb Rating</mat-label>
+            <input matInput placeholder="imdb Rating" [formControl]="movieAddForm.controls['imdbRating']"/>
+            </mat-form-field>
+            </p>
+
+        </div> 
+
+        <div class="col-md-3"> 
+            <p>
+                <mat-form-field appearance="standard" class="text-full-width">
+                    <mat-label>Release Date</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="dd-Mon-yyyy" [formControl]="movieAddForm.controls['releaseDate']">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker color="accent"></mat-datepicker>
+
+                    
+                </mat-form-field>
+            </p>
+        </div>
+        
+
+        <div class="col-md-6">
+            
+            <p>
+            <mat-form-field class="text-full-width" appearance="standard">
+            <mat-label>Trailer URL</mat-label>
+            <input matInput placeholder="Trailer URL" [formControl]="movieAddForm.controls['trailer']"/>
+            </mat-form-field>
+            </p>
+
+        </div>
+        
+        <div class="col-md-6">
+            
+            <p>
+                <app-file-upload [formControl]="movieAddForm.controls['posterURL']" [progress]="progress"></app-file-upload>
+            </p>
+
+        </div>  
+
+        <div class="col-md-12"  style="align-content: center;">
+            &nbsp;<mat-hint>{{updateInfo}}</mat-hint>
+        </div>
+        <div class="col-md-12"  style="align-content: center;">
+            &nbsp;
+        </div>
+
+        <div class="col-md-12"  style="align-content: left;">
+            <span matTooltip="Add Movie">
+            <button type="submit" mat-raised-button [disabled]="!movieAddForm.valid">
+            <mat-icon color="accent">add</mat-icon>
+            <span>Add Movie</span>
+            
+            </button>
+            </span> 
+            
+        </div>
+       
+        <div class="col-md-12"  style="align-content: center;">
+            &nbsp;
+        </div>
+        <div class="col-md-12"  style="align-content: center;">
+            &nbsp;
+        </div>
+    </div> 
+</form>
+</div>

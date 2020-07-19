@@ -1,0 +1,14 @@
+<div class="container" style="background-color: whitesmoke;" class="mat-elevation-z5">
+<mat-tab-group dynamicHeight  backgroundColor="primary" (selectedTabChange)="movieTabSelect($event, edit)">
+    <mat-tab label="Movie Entry">  
+        <app-movie-entry></app-movie-entry>
+    </mat-tab> 
+    <mat-tab label="Modify"> 
+        <app-movie-edit #edit></app-movie-edit>    
+    </mat-tab>
+
+</mat-tab-group>
+</div>  
+    
+        
+  

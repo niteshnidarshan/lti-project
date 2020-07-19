@@ -1,0 +1,134 @@
+<div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
+      <div class="row large-box mat-elevation-z3" style="width: 100%;">
+          <div class="col-md-6">
+            
+                  <p>
+                  <mat-form-field class="text-full-width"  appearance="standard">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="First Name" name="firstName" [formControl]="registerForm.controls['firstName']" [value]="registerForm.controls['firstName'].value | titlecase" required/>
+                    <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">
+                        <strong>First</strong> name is mandatory.
+                    </mat-error>
+                  </mat-form-field> 
+                  </p>
+            
+          </div>
+          <div class="col-md-6">
+            
+                  <p>
+                  <mat-form-field class="text-full-width"  appearance="standard">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="Last Name" name = "lastName" [formControl]="registerForm.controls['lastName']" />
+                  </mat-form-field>
+                  </p>
+            
+          </div>
+
+          <div class="col-md-6">   
+            <section class="radio-section">
+                <label class="radio-margin">Gender:</label>
+                <mat-radio-group aria-label="Select Gender" fxLayout="column" [formControl]="registerForm.controls['gender']" >
+                 
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                    <mat-radio-button value="Others">Others</mat-radio-button> 
+                     
+                </mat-radio-group>  
+            </section>
+          </div>
+
+          <div class="col-md-6"> 
+            <p>
+                <mat-form-field appearance="standard" class="text-full-width">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="dd-Mon-yyyy" [formControl]="registerForm.controls['dob']">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker color="accent"></mat-datepicker>
+
+                    <mat-error *ngIf="registerForm.controls['dob'].hasError('required')">
+                        Date of Birth is mandatory.
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.controls['dob'].hasError('datevalidator')">
+                        Invalid Date.
+                    </mat-error>
+                </mat-form-field>
+            </p>
+          </div>
+          <div class="col-md-4">
+            
+              <p>
+              <mat-form-field class="text-full-width"  appearance="standard">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" name = "email" [formControl] = "registerForm.controls['email']" required />
+                <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+                    Email Required!
+                </mat-error>
+             
+                <mat-error *ngIf="registerForm.controls['email'].hasError('email') && registerForm.controls['email'].dirty">
+                    Invalid email.
+                </mat-error>
+            </mat-form-field>
+              </p>
+  
+          </div>
+          <div class="col-md-4">
+            
+            <p>
+            <mat-form-field class="text-full-width" appearance="standard">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name = "password_" [formControl]="registerForm.controls['password']" required />
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="registerForm.controls['password'].hasError('required')">Password required!</mat-error>
+              <mat-error *ngIf="registerForm.controls['password'].hasError('minlength')">
+               Password should be in minimum 3 charchater 
+              </mat-error>
+            </mat-form-field>
+            </p>
+  
+          </div>
+  
+          <div class="col-md-4">
+            
+            <p>
+            <mat-form-field class="text-full-width" appearance="standard">
+              <mat-label>Mobile</mat-label>
+              <input matInput placeholder="Mobile" [formControl]="registerForm.controls['mobile']"/>
+            </mat-form-field>
+            </p>
+  
+          </div>
+  
+          <div class="col-md-12">
+            
+            <p>
+            <mat-form-field class="text-full-width" appearance="standard">
+              <mat-label>Location</mat-label>
+              <input matInput placeholder="Location" name = "location" [formControl] = "registerForm.controls['location']"/>
+            </mat-form-field>
+            </p>
+  
+          </div>
+  
+          <div class="col-md-12"  style="align-content: left;">
+            <span matTooltip="Fill registration form to enable">
+            <button type="submit" mat-raised-button [disabled]="!registerForm.valid">
+              <mat-icon color="accent">person</mat-icon>
+              <span>Register</span>
+              
+            </button>
+            </span>
+            <span>&nbsp;<a color="accent" mat-button href="www.google.com">Reset password?</a></span>
+          </div>
+   
+          <div class="col-md-12"  style="align-content: center;">
+            &nbsp;
+          </div>
+     </div>
+   
+   </form>
+  </div>
+  
+    
+        
+  

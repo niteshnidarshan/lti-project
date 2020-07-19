@@ -1,0 +1,92 @@
+ 
+  .box.flex {
+    width: 10%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: orange;
+  }  
+
+  .register-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .text-full-width {
+    width: 100%;
+  }
+  
+  .large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*margin-left: 16px;
+    margin-right: 16px;*/
+    width: fit-content;
+    padding: 16px;
+    border-radius: 8px;
+  }
+   
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+  .radio-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+    border-style:groove;
+    border-width: thin;
+    border-color: lightgray;
+  }
+  
+  .radio-margin {
+    margin: 0 15px;
+  }
+  .header{
+    width: 100%;
+    background-color: whitesmoke;
+  } 
+
+  button{
+    outline: none;
+} 
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.table-container {
+  height: 300px;
+  overflow: auto;
+}
+
+table {
+  width: 100%; 
+}
+
+.mat-cell{
+  padding: 5px;  
+}
+ 
+.mat-cell > span.truncate-text {
+  text-overflow: ellipsis; 
+  overflow: hidden; 
+  white-space: nowrap;
+  padding: 7px; 
+}
+.mat-header-cell > span.header-text {
+  text-overflow: ellipsis; 
+  overflow: hidden; 
+  white-space: nowrap;
+  padding: 7px; 
+}
+
+ 

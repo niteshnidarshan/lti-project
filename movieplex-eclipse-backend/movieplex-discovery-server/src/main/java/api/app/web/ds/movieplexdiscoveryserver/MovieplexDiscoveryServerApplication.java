@@ -1,0 +1,15 @@
+package api.app.web.ds.movieplexdiscoveryserver;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+@SpringBootApplication
+@EnableEurekaServer
+public class MovieplexDiscoveryServerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MovieplexDiscoveryServerApplication.class, args);
+	}
+
+}
