@@ -88,7 +88,7 @@
             <p>
             <mat-form-field class="text-full-width" appearance="standard">
             <mat-label>imdb Rating</mat-label>
-            <input matInput placeholder="imdb Rating" [formControl]="movieAddForm.controls['imdbRating']"/>
+            <input matInput type="number" placeholder="imdb Rating up to 10" [formControl]="movieAddForm.controls['imdbRating']"/>
             </mat-form-field>
             </p>
 
@@ -98,7 +98,7 @@
             <p>
                 <mat-form-field appearance="standard" class="text-full-width">
                     <mat-label>Release Date</mat-label>
-                    <input matInput [matDatepicker]="picker" placeholder="dd-Mon-yyyy" [formControl]="movieAddForm.controls['releaseDate']">
+                    <input matInput [matDatepicker]="picker" placeholder="dd/Mon/yyyy" [formControl]="movieAddForm.controls['releaseDate']">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker color="accent"></mat-datepicker>
 
@@ -120,32 +120,10 @@
         </div>
         
         <div class="col-md-6">
-            <app-file-upload formControlName="image" [progress]="progress"></app-file-upload>
-            <!--<input type="file" [formControl]="movieAddForm.controls['posterURL']" (change)="uploadFile($event)" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*"  />-->
-        </div>
             
-            <div class="col-md-12">
-                <div class="flex-container">  
-                    <div style="text-align:left;width: 25%;">
-                     <!--   <mat-card style="height: 30%; width: auto; transition: none !important; box-shadow: none !important;">  
-                        <mat-card-content style=" position: absolute; top: 0px; left: 0px; bottom: 22px; width: 100%;">  
-                            <ul style="padding: 0px; list-style-type: none;">  
-                                <li *ngFor="let file of files">  
-                                    <mat-progress-bar [value]="file.progress"></mat-progress-bar>  
-                                    <span id="file-label">  
-                                          
-                                    </span>  
-                                </li>  
-                            </ul>  
-                        </mat-card-content>  
-                         
-                    </mat-card>-->
-                    <!--<input type="file" [formControl]="movieAddForm.controls['posterURL']" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" style="display:none;" />-->
-                </div>                
-                </div> 
-            </div>
-   
-
+            <app-file-upload formControlName="image" [progress]="progress"></app-file-upload>
+        </div>
+              
         <div class="col-md-12"  style="align-content: center;">
             &nbsp;<mat-hint>{{updateInfo}}</mat-hint>
         </div>

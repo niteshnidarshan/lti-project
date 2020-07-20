@@ -1,9 +1,11 @@
-<mat-form-field>
+
+<mat-form-field>  
     <mat-label>Filter</mat-label>
     <input matInput appearance="outline" (keyup)="applyFilter($event)" placeholder="Search ..." #input>
-    <mat-icon matPrefix color="accent">search&nbsp;</mat-icon>
-</mat-form-field>
-<div class="table-container mat-elevation-z8">
+    <mat-icon matPrefix color="accent">search&nbsp;</mat-icon> 
+</mat-form-field>  
+ 
+<div class="table-container mat-elevation-z1"> 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
  
 <!-- MovieId Column -->
@@ -191,6 +193,12 @@
 </table>
 
 </div>
+
 <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+<span matTooltip="Refresh List">
+    <button type="button" mat-icon-button (click)="refreshList()">
+        <mat-icon color="accent">refresh</mat-icon>
+    </button> 
+</span>
 <br>
-<br>
+<br> 

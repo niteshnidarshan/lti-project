@@ -52,7 +52,7 @@ public class MovieServiceImpl implements MovieService {
 		movie.setProducer(dto.getProducer());
 		movie.setReleaseDate(dto.getReleaseDate());
 		movie.setTrailer(dto.getTrailer());
-		movie.setUserRating(dto.getUserRating());
+		//movie.setUserRating(dto.getUserRating());
 		
 		movie = this.repository.save(movie);
 		

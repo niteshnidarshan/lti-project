@@ -13,9 +13,9 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class FileUploadComponent implements OnInit {
+export class FileUploadComponent {
 
-  @Input() progress;
+  @Input() progress; 
   onChange: Function;
    file: File | null = null;
 
@@ -26,9 +26,6 @@ export class FileUploadComponent implements OnInit {
   }
 
   constructor(private host: ElementRef<HTMLInputElement>) { }
-
-  ngOnInit(): void {
-  }
 
   writeValue( value: null ) {
     // clear file input

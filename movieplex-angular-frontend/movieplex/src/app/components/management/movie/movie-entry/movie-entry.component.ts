@@ -3,10 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { MovieModel } from 'src/app/models/MovieModel';
 import { MovieService } from 'src/app/services/http-services/movie-service/movie.service';
 import { MessageDialogService } from 'src/app/services/utilty-services/dialog/message-dialog.service';
-import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
-import { MulticastOperator } from 'rxjs/internal/operators/multicast';
+import { HttpEventType, HttpErrorResponse } from '@angular/common/http'; 
 import { requiredFileType } from 'src/app/file-upload/file-upload/requiredFileType';
 import { toFormData } from 'src/app/file-upload/file-upload/toFormData';
 import { uploadProgress } from 'src/app/file-upload/file-upload/uploadProgress';
@@ -18,10 +15,7 @@ import { toResponseBody } from 'src/app/file-upload/file-upload/toResponseBody';
   styleUrls: ['./movie-entry.component.css']
 })
 export class MovieEntryComponent implements OnInit {
-
-//  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
-//  files  = []; 
-
+ 
 progress = 0;
 percentDone = 0;
   posterURLs: File;
@@ -61,21 +55,15 @@ percentDone = 0;
       "posterURL": [null],
       "imdbRating": new FormControl(), 
       "releaseDate": new FormControl(),
-      "image": new FormControl(null, [Validators.required, requiredFileType('jpg')]) 
+      //"image": new FormControl(null, [Validators.required, requiredFileType('jpg')]) 
+      "image": new FormControl(null) 
     });
   }
-
-  /*uploadFile(event) {alert("y");
-    const file = (event.target as HTMLInputElement).files[0];
-    this.movieAddForm.patchValue({
-      posterURLs: file
-    });
-    this.movieAddForm.get('posterURLs').updateValueAndValidity()
-  }*/
+ 
   addMovie(){ 
     let category:string = ""; 
-    let categories = this.movieAddForm.controls['category'].value;
-    if(categories.length>0){
+    let categories = this.movieAddForm.controls['category'].value; 
+    if(categories != null && categories.length>0){
      this.movieAddForm.controls['category'].value.forEach(element => {
        category = category+" "+element;
      });
@@ -107,13 +95,12 @@ percentDone = 0;
     
   this.movieService.addMovie(movieModel).subscribe(
     (success) => {
-      this.movieDataResponse = success;  
-      alert(this.movieDataResponse.movieId); 
-      //this.uploadPoster(this.movieAddForm.controls['posterURL'].value, this.movieDataResponse.movieId);
-      //this.uploadPoster(this.fileUpload.nativeElement, this.movieDataResponse.movieId);
-      //this.uploadPoster(this.posterURLs, this.movieDataResponse.movieId);
-      //this.onUpload(this.movieDataResponse.movieId);
-      this.submitImage(this.movieDataResponse.movieId);
+      this.movieDataResponse = success;   
+      
+      if(this.movieAddForm.controls['image'].value != null){
+        this.submitImage(this.movieDataResponse.movieId);
+      }
+
       let options = {
         title: 'Movie Entry',
         message1: "Movie added successfully.",
@@ -123,6 +110,7 @@ percentDone = 0;
       };
  
       this.dialogService.open(options);
+      this.movieAddForm.reset();
     },
     (err) => {
       let options = {
@@ -138,113 +126,19 @@ percentDone = 0;
   );
 
 
-  }
-
-  submitImage(movieId: string) {alert("done!");
+  } 
+  submitImage(movieId: string) {
     this.movieService.uploadPoster(toFormData(this.movieAddForm.value), movieId).pipe(
       uploadProgress(progress => (this.percentDone = progress)),
       toResponseBody()
-    ).subscribe(response => {alert("response = "+response);
-      this.progress = 0;
-      this.movieAddForm.reset();
-      // do something with the response
-    });
-    /*this.http.post('http://...', toFormData(this.signup.value), {
-      reportProgress: true,
-      observe: 'events'
-    }).pipe(
-      uploadProgress(progress => (this.percentDone = progress)),
-      toResponseBody()
-    ).subscribe(response => {
-      this.progress = 0;
-      this.signup.reset();
-      // do something with the response
-    });*/
-    /*this.movieService.uploadPoster(formData, movieId).pipe(  
-      map(event => {  
-        switch (event.type) {  
-          case HttpEventType.UploadProgress:  
-            file.progress = Math.round(event.loaded * 100 / event.total);  
-            break;  
-          case HttpEventType.Response:  
-            return event;  
-        }  
-      }),  
-      catchError((error: HttpErrorResponse) => {  
-        file.inProgress = false;  
-        return of(`${file.data.name} upload failed.`);  
-      })).subscribe((event: any) => {  
-        if (typeof (event) === 'object') {  
-          console.log(event.body);  
-        }  
-      });*/
-  }
-
- /* uploadPoster(file, movieId: string) {  alert("x");
-    const formData = new FormData();  
-    formData.append('file', file.data);  
-    file.inProgress = true;  
-    this.movieService.uploadPoster(formData, movieId).pipe(  
-      map(event => {  
-        switch (event.type) {  
-          case HttpEventType.UploadProgress:  
-            file.progress = Math.round(event.loaded * 100 / event.total);  
-            break;  
-          case HttpEventType.Response:  
-            return event;  
-        }  
-      }),  
-      catchError((error: HttpErrorResponse) => {  
-        file.inProgress = false;  
-        return of(`${file.data.name} upload failed.`);  
-      })).subscribe((event: any) => {  
-        if (typeof (event) === 'object') {  
-          console.log(event.body);  
-        }  
-      });  
-  }*/
-/*
-  onUpload(movieId: string) {  
-    const fileUpload = this.fileUpload.nativeElement;
-    fileUpload.onchange = () => {  
-    for (let index = 0; index < fileUpload.files.length; index++)  
-    {  
-     const file = fileUpload.files[index];  
-     this.files.push({ data: file, inProgress: false, progress: 0});  
-    }   
-    this.uploadFiles(movieId); 
-    };  
-    fileUpload.click();  
-}
-
-  uploadFile(file, movieId: string) {  
-    const formData = new FormData();  
-    formData.append('file', file.data);  
-    file.inProgress = true;  
-    this.movieService.uploadPoster(formData, movieId).pipe(  
-      map(event => {  
-        switch (event.type) {  
-          case HttpEventType.UploadProgress:  
-            file.progress = Math.round(event.loaded * 100 / event.total);  
-            break;  
-          case HttpEventType.Response:  
-            return event;  
-        }  
-      }),  
-      catchError((error: HttpErrorResponse) => {  
-        file.inProgress = false;  
-        return of(`${file.data.name} upload failed.`);  
-      })).subscribe((event: any) => {  
-        if (typeof (event) === 'object') {  
-          console.log(event.body);  
-        }  
-      });  
-  }
-  private uploadFiles(movieId: string) {  
-    this.fileUpload.nativeElement.value = '';  
-    this.files.forEach(file => {  
-      this.uploadFile(file, movieId);  
-    });  
-  }*/
-  
+    ).subscribe(event => {  
+        this.movieAddForm.reset(); 
+    },
+    (err) => {
+      alert("File could not be saved ... "+err.error.message);
+    }
+    
+    );
+     
+  } 
 }

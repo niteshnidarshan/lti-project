@@ -121,6 +121,16 @@ export class MovieEditComponent implements OnInit {
       };
  
       this.movieEditDialog.open(options); 
+
+      this.movieEditDialog.confirmed().subscribe(confirmed => {
+        if (confirmed) { 
+            // If updated reload data grid
+            this.loadData();
+            }
+      });
+  }
+  refreshList(){
+    this.loadData();
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
