@@ -39,8 +39,8 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { MovieEntryComponent } from './components/management/movie/movie-entry/movie-entry.component';
 import { MovieEditComponent } from './components/management/movie/movie-edit/movie-edit.component';
 import { MovieEditDialogComponent } from './components/management/movie/movie-edit-dialog/movie-edit-dialog.component';
-import { FileUploadComponent } from './components/file-upload/file-upload/file-upload.component';
-
+import { FileUploadComponent } from './file-upload/file-upload/file-upload.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,8 +55,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload/file-u
     UserEditComponent,
     MovieEntryComponent,
     MovieEditComponent,
-    MovieEditDialogComponent, 
-    FileUploadComponent
+    MovieEditDialogComponent,
+    FileUploadComponent 
   ],
   imports: [
     BrowserModule,

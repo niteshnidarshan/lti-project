@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import lombok.Getter;
 import lombok.Setter;
-
+//@ConfigurationProperties(prefix="spring.servlet.multipart",ignoreUnknownFields=false)
 @ConfigurationProperties(prefix="file")
 @Getter
 @Setter

@@ -63,23 +63,25 @@ private static final Logger logger = LoggerFactory.getLogger(MovieMediaControlle
     }
 	*/
 	//@PostMapping("/upload-movie-pic-")
-    public List<String> uploadFile(String movieId, MultipartFile file) {
+	@PostMapping("/uploadMultipleFiles/{movieId}/save")
+    public ResponseEntity<MovieDetailDto> uploadFile(@PathVariable("movieId") String movieId, @RequestParam("image") MultipartFile file) {
 
-        String fileName = fileStorageService.storeFile(file, movieId);
+        String fileName = fileStorageService.storeFile(file, movieId); 
         
-        String fileDownloadUrix = ServletUriComponentsBuilder.fromCurrentContextPath().toString();
-        System.out.println("Imhere="+fileDownloadUrix);
-
+        String fileDownloadUrix = ServletUriComponentsBuilder.fromCurrentContextPath().toString(); 
+        
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/") ///api/media/user
                 .path(fileName)
                 .toUriString();
         
-
-        //Update filename+movieId to movieId record  
-        MovieDetailDto returnDto = this.service.updateMoviePoster(movieId, fileName);
+        String finalDownloadURI = "/MoviePlex-Movie-Micro/api/media/downloadFile/"+fileName;
         
-        String posterUrl = returnDto.getPosterURL();
+        System.out.println("fileDownloadUri="+fileDownloadUri);
+        //Update filename+movieId to movieId record  
+        MovieDetailDto returnDto = this.service.updateMoviePoster(movieId, finalDownloadURI);
+        
+        /*String posterUrl = returnDto.getPosterURL();
         
         List<String> posterUrlList = new ArrayList<String>();
         
@@ -93,16 +95,20 @@ private static final Logger logger = LoggerFactory.getLogger(MovieMediaControlle
         }
         
         //return new UploadFileDto(fileName, fileDownloadUri, file.getContentType(), "caption", "discription", file.getSize());
-        return posterUrlList;
+        return posterUrlList;*/
+        
+        ResponseEntity<MovieDetailDto> response = new ResponseEntity<MovieDetailDto>(returnDto, HttpStatus.OK);
+        
+        return response;
     }
 	
-	@PostMapping("/uploadMultipleFiles/{movieId}/save")
-    public List<List<String>> uploadMultipleFiles(@PathVariable("movieId") String movieId, @RequestParam("files") MultipartFile[] files) {
+	//@PostMapping("/uploadMultipleFiles/{movieId}/save")
+   /* public List<List<String>> uploadMultipleFiles(@PathVariable("movieId") String movieId, @RequestParam("files") MultipartFile[] files) {
         return Arrays.asList(files)
                 .stream()
                 .map(file -> uploadFile(movieId, file))
                 .collect(Collectors.toList());
-    }
+    }*/
 	
 	@GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {

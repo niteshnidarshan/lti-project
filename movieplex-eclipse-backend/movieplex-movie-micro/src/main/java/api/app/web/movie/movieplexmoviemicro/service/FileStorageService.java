@@ -40,8 +40,7 @@ public class FileStorageService {
 	public String storeFile(MultipartFile file, String movieId) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        fileName = fileName+movieId;
-
+        fileName = movieId+"_"+fileName;
         try {
             // Check if the file's name contains invalid characters
             if(fileName.contains("..")) {

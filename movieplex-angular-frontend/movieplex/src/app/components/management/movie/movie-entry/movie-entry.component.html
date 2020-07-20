@@ -120,12 +120,31 @@
         </div>
         
         <div class="col-md-6">
+            <app-file-upload formControlName="image" [progress]="progress"></app-file-upload>
+            <!--<input type="file" [formControl]="movieAddForm.controls['posterURL']" (change)="uploadFile($event)" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*"  />-->
+        </div>
             
-            <p>
-                <app-file-upload [formControl]="movieAddForm.controls['posterURL']" [progress]="progress"></app-file-upload>
-            </p>
-
-        </div>  
+            <div class="col-md-12">
+                <div class="flex-container">  
+                    <div style="text-align:left;width: 25%;">
+                     <!--   <mat-card style="height: 30%; width: auto; transition: none !important; box-shadow: none !important;">  
+                        <mat-card-content style=" position: absolute; top: 0px; left: 0px; bottom: 22px; width: 100%;">  
+                            <ul style="padding: 0px; list-style-type: none;">  
+                                <li *ngFor="let file of files">  
+                                    <mat-progress-bar [value]="file.progress"></mat-progress-bar>  
+                                    <span id="file-label">  
+                                          
+                                    </span>  
+                                </li>  
+                            </ul>  
+                        </mat-card-content>  
+                         
+                    </mat-card>-->
+                    <!--<input type="file" [formControl]="movieAddForm.controls['posterURL']" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" style="display:none;" />-->
+                </div>                
+                </div> 
+            </div>
+   
 
         <div class="col-md-12"  style="align-content: center;">
             &nbsp;<mat-hint>{{updateInfo}}</mat-hint>

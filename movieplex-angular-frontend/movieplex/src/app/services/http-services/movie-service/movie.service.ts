@@ -31,7 +31,8 @@ export class MovieService {
     return this.http.post<any>(this.MOVIE_UPLOAD_URL+"/"+movieId+"/save", formData, {  
         reportProgress: true,  
         observe: 'events'  
-      });  
+      }); 
+      //return this.http.post<any>(this.MOVIE_UPLOAD_URL+"/"+movieId+"/save", formData); 
   }
 
   setMovieData(data: any){ 
