@@ -48,8 +48,9 @@
   }
   .header{
     width: 100%;
-    background-color: whitesmoke;
-  }
+    background-color: rgb(3, 175, 243);
+    color: white;
+  } 
   button{
     outline: none;
   }

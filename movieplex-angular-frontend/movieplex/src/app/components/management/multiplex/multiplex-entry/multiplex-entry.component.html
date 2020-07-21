@@ -1,0 +1,123 @@
+<div class="container" style="max-height: 100%;"> 
+    <mat-card class="header"> 
+         <mat-card-title>Multiplex Management</mat-card-title>  
+    </mat-card> 
+    <div class="col-md-12"></div>
+    <form [formGroup]="registerMplexForm" (ngSubmit)="registerMplex()"> 
+        <div class="row">
+            <div class="col-md-5">
+                 
+                    <mat-form-field class="text-full-width"  appearance="standard">
+                        <mat-label>Multiplex Name</mat-label>
+                        <input matInput placeholder="Multiplex Name" [formControl]="registerMplexForm.controls['name']" [value]="registerMplexForm.controls['name'].value | titlecase" required/>
+                        <mat-error *ngIf="registerMplexForm.controls['name'].hasError('required')">
+                            Movie name is mandatory.
+                        </mat-error>
+                    </mat-form-field>  
+                
+            </div>
+            <div class="col-md-5"> 
+                        <mat-form-field class="text-full-width"  appearance="standard">
+                            <mat-label>Location</mat-label>
+                            <input matInput placeholder="Address" [formControl]="registerMplexForm.controls['location']" />
+                        </mat-form-field> 
+            </div> 
+     
+            <div class="col-md-2">
+                <span matTooltip="Fill registration form to enable">
+                    <button type="submit" mat-raised-button [disabled]="!registerMplexForm.valid">
+                    <mat-icon color="accent">add</mat-icon>
+                    <span>Register</span>
+                    
+                    </button>
+                </span>
+                
+            </div>
+        </div>
+    </form> 
+
+    <div class="row">
+        <div class="col-md-12">
+            <span matTooltip="Add screen to the Multiplex" style="display: none;">
+                <button mat-raised-button (click)="addScreen()" [disabled]="!isMultiplexRegistered">
+                <mat-icon color="accent">add</mat-icon>
+                <span>Add Screen</span>
+                
+                </button>
+            </span>
+            
+        </div> 
+
+    </div> 
+        <mat-form-field class="text-full-width" appearance="outline">  
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search ..." #input>
+            <mat-icon matPrefix color="accent">search&nbsp;</mat-icon> 
+        </mat-form-field>   
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z0" matSort>
+          
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> 
+                <span class="header-text" mat-sort-header>Multiplex Name </span>
+            </th>
+            <td mat-cell *matCellDef="let element"> 
+                <span class="truncate-text">{{element.name}} </span>
+            </td>
+        </ng-container>
+         
+        <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef> 
+                <span class="header-text" mat-sort-header>Location </span>
+            </th>
+            <td mat-cell *matCellDef="let element"> 
+                <span class="truncate-text">{{element.location}} </span>
+            </td>
+        </ng-container> 
+
+        <ng-container matColumnDef="numberOfScreens">
+            <th mat-header-cell *matHeaderCellDef> 
+                <span class="header-text" mat-sort-header>Total screens </span>
+            </th>
+            <td mat-cell *matCellDef="let element"> 
+                <span class="truncate-text">{{element.numberOfScreens}} </span>
+            </td>
+        </ng-container> 
+
+        <ng-container matColumnDef="mPlexCreateTimeStamp">
+            <th mat-header-cell *matHeaderCellDef> 
+                <span class="header-text" mat-sort-header>Created On </span>
+            </th>
+            <td mat-cell *matCellDef="let element"> 
+                <span class="truncate-text">{{element.mPlexCreateTimeStamp | date: 'shortDate'}} </span>
+            </td>
+        </ng-container>
+         
+        <ng-container matColumnDef="mPlexModifiedTimeStamp">
+            <th mat-header-cell *matHeaderCellDef> 
+                <span class="header-text" mat-sort-header>Last Modified </span>
+            </th>
+            <td mat-cell *matCellDef="let element"> 
+                <span class="truncate-text">{{element.mPlexModifiedTimeStamp | date: 'shortDate'}} </span>
+            </td>
+        </ng-container>
+        
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr> 
+        
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+        </table>
+         
+        
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+        <span matTooltip="Refresh List">
+            <button type="button" mat-icon-button (click)="refreshList()">
+                <mat-icon color="accent">refresh</mat-icon>
+            </button> 
+        </span>
+        <br>
+        <br>  
+</div> 

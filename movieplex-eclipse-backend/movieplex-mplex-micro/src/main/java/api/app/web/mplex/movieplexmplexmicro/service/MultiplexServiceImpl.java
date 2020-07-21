@@ -32,7 +32,7 @@ public class MultiplexServiceImpl implements MultiplexService {
 		
 		MPlexDetail mPlex = this.convertor.convertDtoToOriginal(dto);
 		
-		mPlex.setMultiplexId(null);
+		mPlex.setMultiplexId(null); 
 		mPlex.setAlive(true);
 		mPlex.setMPlexCreateTimeStamp(new Date(System.currentTimeMillis()));
 		

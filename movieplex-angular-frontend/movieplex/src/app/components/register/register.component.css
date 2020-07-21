@@ -46,3 +46,7 @@
   .radio-margin {
     margin: 0 15px;
   }
+  .header{
+    width: 100%;
+    background-color: whitesmoke;
+  } 

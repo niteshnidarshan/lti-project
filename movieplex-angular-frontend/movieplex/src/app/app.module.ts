@@ -40,6 +40,8 @@ import { MovieEntryComponent } from './components/management/movie/movie-entry/m
 import { MovieEditComponent } from './components/management/movie/movie-edit/movie-edit.component';
 import { MovieEditDialogComponent } from './components/management/movie/movie-edit-dialog/movie-edit-dialog.component';
 import { FileUploadComponent } from './file-upload/file-upload/file-upload.component';
+import { MultiplexEntryComponent } from './components/management/multiplex/multiplex-entry/multiplex-entry.component';
+import { ScreenComponent } from './components/management/multiplex/screen/screen.component';
  
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { FileUploadComponent } from './file-upload/file-upload/file-upload.compo
     MovieEntryComponent,
     MovieEditComponent,
     MovieEditDialogComponent,
-    FileUploadComponent 
+    FileUploadComponent,
+    MultiplexEntryComponent,
+    ScreenComponent 
   ],
   imports: [
     BrowserModule,

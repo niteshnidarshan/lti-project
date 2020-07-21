@@ -22,10 +22,7 @@ table {
 .mat-cell{
   padding: 0px;  
 }
-
-.mat-header-cell{
-  background-color: silver;
-}
+ 
  
 .mat-cell > span.truncate-text {
   text-overflow: ellipsis; 
@@ -36,6 +33,9 @@ table {
 .mat-header-cell > span.header-text {
   text-overflow: ellipsis; 
   overflow: hidden; 
-  white-space: nowrap;  
-  font-size: medium;
+  white-space: nowrap;   
+}
+.mat-header-cell{
+  background-color: whitesmoke;
+  color: #ff4081; 
 }

@@ -25,7 +25,7 @@ import { toResponseBody } from 'src/app/file-upload/file-upload/toResponseBody';
 })
 export class MovieEditDialogComponent implements OnInit {
 
-  currentPosterUrls: [string];
+  currentPosterUrl: string;
   progress = 0;
   percentDone = 0;
   posterURLs: File;
@@ -71,11 +71,8 @@ export class MovieEditDialogComponent implements OnInit {
       movieCategories = this.movieReqData[0].category;
     }
 
-    //To Show Poster
-    if(this.movieReqData[0].posterURL != null){
-      this.currentPosterUrls = this.movieReqData[0].posterURL.split(",");
-      alert(this.currentPosterUrls[0]);
-    } 
+    //To Show Poster 
+    this.currentPosterUrl = this.movieReqData[0].posterURL; 
 
     this.movieEditForm = this.formBuilder.group({
       "name": new FormControl(this.movieReqData[0].name,Validators.required),

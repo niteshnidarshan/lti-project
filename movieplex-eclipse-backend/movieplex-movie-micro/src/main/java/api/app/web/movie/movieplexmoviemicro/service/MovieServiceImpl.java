@@ -69,13 +69,13 @@ public class MovieServiceImpl implements MovieService {
 		
 		MovieDetail movie = this.repository.findById(movieId).orElse(null);
 		
-		String existingFile = movie.getPosterURL();
+		/*String existingFile = movie.getPosterURL();
 		if(existingFile == null || existingFile.equals(""))
 			existingFile = fileName;
 		else
 			existingFile = existingFile+","+fileName;
-		
-		movie.setPosterURL(existingFile);
+		*/
+		movie.setPosterURL(fileName);
 		
 		movie = this.repository.save(movie);
 		
