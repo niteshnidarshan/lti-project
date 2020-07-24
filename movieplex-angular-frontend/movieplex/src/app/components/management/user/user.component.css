@@ -1,0 +1,51 @@
+.table-container {
+  max-height: 370px;  
+}
+.overflw{
+  max-width: 100%;  
+  overflow: auto;
+}
+
+.text-full-width {
+  width: 100%;  
+}
+
+.search-text-full-width {
+  width: 100%; 
+  transform: translateY(1.36em);  
+}
+
+
+.header{
+  width: 100%;
+  background-color: rgb(3, 175, 243);
+  color: white;
+} 
+
+button{
+  outline: none;
+}  
+
+table {
+  width: 100%;  
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-cell > span.truncate-text {
+  text-overflow: ellipsis; 
+  overflow: hidden; 
+  white-space: nowrap; 
+  padding: 7px;
+}
+.mat-header-cell > span.header-text {
+  text-overflow: ellipsis; 
+  overflow: hidden; 
+  white-space: nowrap;   
+}
+.mat-header-cell{
+  background-color: whitesmoke;
+  color: #ff4081; 
+} 

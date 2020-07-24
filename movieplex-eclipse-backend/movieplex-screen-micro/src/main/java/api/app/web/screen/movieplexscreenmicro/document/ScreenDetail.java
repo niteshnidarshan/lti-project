@@ -28,6 +28,7 @@ public class ScreenDetail {
 	private Date showEndDate;
 	private boolean isScreenAlive;
 	private Date showAllocationDate;
+	private Date screenCreationDate;
 	private Date showLastModified;
 
 }

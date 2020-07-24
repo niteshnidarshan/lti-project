@@ -16,7 +16,7 @@ export class MultiplexEntryComponent implements OnInit {
 
   registerMplexForm: FormGroup;
   isMultiplexRegistered: boolean = false;
-  multiplexList: any;
+  multiplexList: any; 
 
   ELEMENT_DATA = new Array<MultiplexModel>();
   dataSource: any;
@@ -36,7 +36,7 @@ export class MultiplexEntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm();
-    this.loadData();
+    this.loadData(); 
   }
 
   validateForm(){
@@ -93,14 +93,14 @@ export class MultiplexEntryComponent implements OnInit {
     this.multiPlexService.getAllMultiplexOfUser(userId).subscribe(
       (result) => {
         this.multiplexList = result;  
- 
+        
         this.parseElement();
         this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
         this.dataSource.sort = this.sort; 
         this.dataSource.paginator = this.paginator;
       },
       (err) => {
-        alert(err);
+        alert(err.error.message );
       }
     );
   }

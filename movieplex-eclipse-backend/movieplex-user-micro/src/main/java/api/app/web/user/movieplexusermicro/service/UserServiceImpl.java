@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService{
 		UserDetail user = this.repository.findByEmailAndPasswordAndIsAlive(loginDto.getEmail(), loginDto.getPassword(), true);
 		 
 		if(user != null) {
+			 
 			user.setPassword("");
 			dto = this.convertor.convertOriginalToDto(user);
 			if(dto.getUserType() != null && (dto.getUserType().equals(UserType.ADMIN) || dto.getUserType().equals(UserType.SUPER_USER))) {
@@ -91,7 +92,7 @@ public class UserServiceImpl implements UserService{
 			user.setGender(userDetail.getGender());
 			user.setLocation(userDetail.getLocation());
 			user.setMobile(userDetail.getMobile());
-			user.setPassword(userDetail.getPassword());
+			//user.setPassword(userDetail.getPassword());
 			user.setUserType(userDetail.getUserType());
 			user.setProfileLastModifiedTimeStamp(new Date(System.currentTimeMillis()));
 			

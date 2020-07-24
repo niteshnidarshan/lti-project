@@ -76,8 +76,19 @@ public class MovieController {
 	}
 	
 	@GetMapping("/get/id/{movieId}")
-	public ResponseEntity<MovieDetailDto> getMovieById(@PathVariable("movieId") String movieId){
-		MovieDetailDto dto = this.service.getMovieById(movieId);
+	public ResponseEntity<MovieDetailDto> getMovieById(@PathVariable(value = "movieId", required = true) String movieId){
+		if(movieId == null) {
+			throw new CommonException("Not a valid movie id");
+		}
+		MovieDetailDto dto = null;
+		 
+		
+		dto = this.service.getMovieById(movieId);
+		
+		if(dto == null) {
+			throw new CommonException("Not a valid movie id");
+		}
+		
 		ResponseEntity<MovieDetailDto> response = new ResponseEntity<MovieDetailDto>(dto, HttpStatus.OK);
 		return response;
 	}

@@ -39,6 +39,12 @@ export class ProfileComponent implements OnInit {
     };
 
     this.userEdit.open(options); 
+    this.userEdit.confirmed().subscribe(confirmed => {
+      //if (confirmed) {  
+          // If updated reload data grid
+          this.refreshProfile();
+       //}
+    });
   }
 
   refreshProfile(){
