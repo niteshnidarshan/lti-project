@@ -25,6 +25,7 @@ public class ScreenDetailDto {
 	private Date showEndDate;
 	private boolean isScreenAlive;
 	private Date showAllocationDate;
+	private Date screenCreationDate;
 	private Date showLastModified;
 	
 }

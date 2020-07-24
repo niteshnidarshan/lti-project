@@ -8,12 +8,12 @@ import api.app.web.user.movieplexusermicro.document.UserDetail;
 
 public interface UserDetailDao extends MongoRepository<UserDetail, String>{
 
-	public UserDetail findByEmailAndPasswordAndIsAlive(String email, String password, boolean isAlive);
+	public UserDetail findByEmailAndPassword(String email, String password);
 	
-	public UserDetail findByEmailAndIsAlive(String email, boolean isAlive);
+	public UserDetail findByEmail(String email);
 	
 	public UserDetail findByUserId(String userId);
 	
-	public List<UserDetail> findByEmail(String email);
+	 
 	
 }

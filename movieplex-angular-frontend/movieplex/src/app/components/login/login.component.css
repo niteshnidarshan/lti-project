@@ -4,3 +4,16 @@
 .login-width{
     width: 100%;
 }
+.header{
+    width: 100%;
+    background-color: rgb(3, 175, 243);
+    color: white;
+  } 
+  .containers {
+    width: 640px; /*can be in percentage also.*/
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    background-color: aliceblue;
+}

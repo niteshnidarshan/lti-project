@@ -18,6 +18,10 @@
     width: 100%;
   }
  
+  .search-text-full-width {
+    width: 100%; 
+    transform: translateY(1.36em);  
+  }
   
   .header{
     width: 100%;

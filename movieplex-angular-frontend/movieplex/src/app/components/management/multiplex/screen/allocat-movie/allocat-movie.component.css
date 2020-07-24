@@ -1,0 +1,43 @@
+.text-full-width {
+    width: 100%;
+  }
+  
+  .large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*margin-left: 16px;
+    margin-right: 16px;*/
+    width: fit-content;
+    padding: 16px;
+    border-radius: 8px;
+  } 
+  .header{
+    width: 100%;
+    background-color: rgb(3, 175, 243);
+    color: white;
+  } 
+
+  button{
+    outline: none;
+} 
+table {
+  width: 100%;
+}
+
+img {
+  /*border: 1px solid #ff4081;
+  border-radius: 1px;*/
+  padding: 5px;
+  width: 40px;
+}
+
+.list-span{
+  padding: 10px; 
+}
+.sub-list-span{
+  margin-right: 70px;
+}
+.poster-image-list {
+  background-size: cover;
+}  

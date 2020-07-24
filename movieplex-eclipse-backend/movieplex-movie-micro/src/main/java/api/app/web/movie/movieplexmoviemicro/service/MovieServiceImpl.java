@@ -99,8 +99,8 @@ public class MovieServiceImpl implements MovieService {
 		MovieDetailDto dto = null;
 		
 		MovieDetail movie = this.repository.findById(movieId).orElse(null);
-		
-		dto = this.convertor.convertOriginalToDto(movie);
+		if(movie != null)
+			dto = this.convertor.convertOriginalToDto(movie);
 		
 		return dto;
 	}

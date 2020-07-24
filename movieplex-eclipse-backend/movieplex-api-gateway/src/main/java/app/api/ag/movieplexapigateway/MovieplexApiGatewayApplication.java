@@ -12,7 +12,7 @@ import org.springframework.web.filter.CorsFilter;
 
 @EnableEurekaClient
 @EnableZuulProxy
-@SpringBootApplication
+@SpringBootApplication 
 public class MovieplexApiGatewayApplication {
 
 	public static void main(String[] args) {

@@ -33,9 +33,10 @@ public class UserServiceImpl implements UserService{
 		
 		UserDetailDto dto = null;
 		
-		UserDetail user = this.repository.findByEmailAndPasswordAndIsAlive(loginDto.getEmail(), loginDto.getPassword(), true);
+		UserDetail user = this.repository.findByEmailAndPassword(loginDto.getEmail(), loginDto.getPassword());
 		 
 		if(user != null) {
+			 
 			user.setPassword("");
 			dto = this.convertor.convertOriginalToDto(user);
 			if(dto.getUserType() != null && (dto.getUserType().equals(UserType.ADMIN) || dto.getUserType().equals(UserType.SUPER_USER))) {
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean checkAlreadyInUse(String email) { 
-		UserDetail user = this.repository.findByEmailAndIsAlive(email, true);
+		UserDetail user = this.repository.findByEmail(email);
 		if(user != null)
 			return true;
 		else 
@@ -91,7 +92,7 @@ public class UserServiceImpl implements UserService{
 			user.setGender(userDetail.getGender());
 			user.setLocation(userDetail.getLocation());
 			user.setMobile(userDetail.getMobile());
-			user.setPassword(userDetail.getPassword());
+			//user.setPassword(userDetail.getPassword());
 			user.setUserType(userDetail.getUserType());
 			user.setProfileLastModifiedTimeStamp(new Date(System.currentTimeMillis()));
 			
@@ -170,11 +171,9 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean checkEmailAlreadyAvailable(String email) {
 		
-		List<UserDetail> userList = new ArrayList<UserDetail>();
+		UserDetail userList = this.repository.findByEmail(email);
 		
-		userList = this.repository.findByEmail(email);
-		
-		if(userList != null && userList.size()>0)
+		if(userList != null)
 			return true;
 		else
 			return false;

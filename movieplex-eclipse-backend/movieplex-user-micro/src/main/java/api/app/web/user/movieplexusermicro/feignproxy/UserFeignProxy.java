@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import api.app.web.user.movieplexusermicro.dto.MPlexDetailDto;
 
-@FeignClient(name = "MoviePlex-Multiplex-Micro")
+//@FeignClient(name = "MoviePlex-Multiplex-Micro")
+//@FeignClient(name = "api-gateway", url = "http://localhost:8765")
+@FeignClient(name = "api-gateway")
 @RibbonClient(name = "MoviePlex-Multiplex-Micro")
 public interface UserFeignProxy {
 
-	@GetMapping("/api/multiplex/get/all/user/{associatedUserId}")
+	@GetMapping("/MoviePlex-Multiplex-Micro/api/multiplex/get/all/user/{associatedUserId}")
 	public ResponseEntity<List<MPlexDetailDto>> getAllMPlexByAssociatedUserId(@PathVariable("associatedUserId") String associatedUserId);
 	
 }
