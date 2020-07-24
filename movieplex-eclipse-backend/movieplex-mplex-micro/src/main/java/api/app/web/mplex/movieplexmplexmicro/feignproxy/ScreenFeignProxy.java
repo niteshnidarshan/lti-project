@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import api.app.web.mplex.movieplexmplexmicro.dto.ScreenDetailDto;
 
-//@FeignClient(name = "MoviePlex-Screen-Micro")
-@FeignClient(name = "api-gateway")
+@FeignClient(name = "MoviePlex-Screen-Micro")
 @RibbonClient(name = "MoviePlex-Screen-Micro")
 public interface ScreenFeignProxy {
 
-	@GetMapping("/MoviePlex-Screen-Micro/api/screen/get/all/{multiplexId}")
+	@GetMapping("/api/screen/get/all/{multiplexId}")
 	public ResponseEntity<List<ScreenDetailDto>> getAllScreenByMultiplex(@PathVariable("multiplexId") String multiplexId);
 	
 }

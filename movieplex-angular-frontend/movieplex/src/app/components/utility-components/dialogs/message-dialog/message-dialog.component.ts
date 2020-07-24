@@ -27,7 +27,7 @@ export class MessageDialogComponent implements OnInit {
   }
 public confirm() {
     this.close(true);
-}
+  }
 @HostListener("keydown.esc")
   public onEsc() {
     this.close(false);

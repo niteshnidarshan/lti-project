@@ -103,7 +103,7 @@
 
           <div class="col-md-12"  style="align-content: left;">
             <span matTooltip="Fill registration form to enable">
-            <button type="submit" mat-raised-button [disabled]="!(userEditForm.dirty && userEditForm.valid)">
+            <button type="submit" mat-raised-button [disabled]="!userEditForm.valid">
               <mat-icon color="accent">update</mat-icon>
               <span>Update</span>
               

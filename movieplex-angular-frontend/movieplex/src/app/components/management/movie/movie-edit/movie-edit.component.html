@@ -1,26 +1,26 @@
-<div class="conatiner">
-<mat-form-field appearance="outline" class="search-text-full-width">  
+
+<mat-form-field appearance="outline">  
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Search ..." #input>
     <mat-icon matPrefix color="accent">search&nbsp;</mat-icon> 
-</mat-form-field> 
-<div class="row  overflw">  
+</mat-form-field>  
+  
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z0" matSort>
  
 <!-- MovieId Column -->
-<!--<ng-container matColumnDef="movieId">
+<ng-container matColumnDef="movieId">
     <th mat-header-cell *matHeaderCellDef> 
         <span class="header-text">Movie Id </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.movieId}} </span>
     </td>
-</ng-container>-->
+</ng-container>
 
 <!-- Name Column -->
 <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Name </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Name </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.name}} </span>
@@ -29,8 +29,8 @@
 
 <!-- Category Column -->
 <ng-container matColumnDef="category">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Category </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Category </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.category}}</span>
@@ -39,8 +39,8 @@
 
 <!-- Casts Column -->
 <ng-container matColumnDef="casts">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Casts </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Casts </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.casts}}</span>
@@ -49,8 +49,8 @@
 
 <!-- producer Column -->
 <ng-container matColumnDef="producer">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Producer </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Producer </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.producer}}</span>
@@ -60,8 +60,8 @@
 
 <!-- director Column -->
 <ng-container matColumnDef="director">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Director </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Director </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.director}} </span>
@@ -71,8 +71,8 @@
 
 <!-- length Column -->
 <ng-container matColumnDef="length">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Length </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Length </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.length}} </span>
@@ -82,8 +82,8 @@
 
 <!-- language Column -->
 <ng-container matColumnDef="language">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Language </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Language </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.language}} </span>
@@ -92,29 +92,29 @@
 </ng-container>
 
  <!-- trailer Column -->
- <!--<ng-container matColumnDef="trailer">
+ <ng-container matColumnDef="trailer">
     <th mat-header-cell *matHeaderCellDef> 
         <span class="header-text">Trailer </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.trailer}} </span>
     </td>
-</ng-container>-->
+</ng-container>
 
  <!-- posterURL Column -->
- <!-- <ng-container matColumnDef="posterURL">
+ <ng-container matColumnDef="posterURL">
     <th mat-header-cell *matHeaderCellDef> 
         <span class="header-text">Poster URL</span>
      </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.posterURL}} </span>
     </td>
-</ng-container>-->
+</ng-container>
 
 <!-- imdbRating Column -->
 <ng-container matColumnDef="imdbRating">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">imdb Rating </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>imdb Rating </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.imdbRating}} </span>
@@ -123,8 +123,8 @@
 
 <!-- userRating Column -->
 <ng-container matColumnDef="userRating">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">user Rating </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>user Rating </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.userRating}} </span>
@@ -133,28 +133,28 @@
 
 <!-- releaseDate Column -->
 <ng-container matColumnDef="releaseDate">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Release Date </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Release Date </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
-        <span class="truncate-text">{{element.releaseDate | date: 'mediumDate'}} </span>
+        <span class="truncate-text">{{element.releaseDate | date: 'shortDate'}} </span>
     </td>
 </ng-container>
 
 <!-- movieAddedBy Column -->
-<!--<ng-container matColumnDef="movieAddedBy">
+<ng-container matColumnDef="movieAddedBy">
     <th mat-header-cell *matHeaderCellDef> 
         <span class="header-text" mat-sort-header>Movie Added By </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.movieAddedBy}} </span>
     </td>
-</ng-container>-->
+</ng-container>
 
 <!-- isAlive Column -->
 <ng-container matColumnDef="isAlive">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Alive </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Alive </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
         <span class="truncate-text">{{element.isAlive}} </span>
@@ -163,21 +163,21 @@
 
 <!-- movieCreationTimeStamp Column -->
 <ng-container matColumnDef="movieCreationTimeStamp">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text" >Movie Created On </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Movie Created On </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
-        <span class="truncate-text">{{element.movieCreationTimeStamp | date: 'full'}} </span>
+        <span class="truncate-text">{{element.movieCreationTimeStamp | date: 'shortDate'}} </span>
     </td>
 </ng-container>
 
 <!-- movieLastModifiedTimeStamp Column -->
 <ng-container matColumnDef="movieLastModifiedTimeStamp">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header> 
-        <span class="header-text">Last Modified </span>
+    <th mat-header-cell *matHeaderCellDef> 
+        <span class="header-text" mat-sort-header>Last Modified </span>
     </th>
     <td mat-cell *matCellDef="let element"> 
-        <span class="truncate-text">{{element.movieLastModifiedTimeStamp | date: 'full'}} </span>
+        <span class="truncate-text">{{element.movieLastModifiedTimeStamp | date: 'shortDate'}} </span>
     </td>
 </ng-container>
 
@@ -189,16 +189,14 @@
 <tr class="mat-row" *matNoDataRow>
     <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
 </tr>
-</table> 
-</div>
-<div class="col-md-12">
+</table>
+ 
+
 <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
 <span matTooltip="Refresh List">
     <button type="button" mat-icon-button (click)="refreshList()">
         <mat-icon color="accent">refresh</mat-icon>
     </button> 
 </span>
-</div>
 <br>
 <br> 
-</div>

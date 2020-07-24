@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import api.app.web.screen.movieplexscreenmicro.dao.ScreenDao;
@@ -38,20 +37,18 @@ public class ScreenServiceImpl implements ScreenService{
 		if(screen.getMovieId() != null) {
 			screen.setShowAllocationDate(new Date(System.currentTimeMillis()));
 		}
-		screen.setScreenCreationDate(new Date(System.currentTimeMillis()));
 		
 		screen = this.repository.save(screen);
 		
 		if(screen != null) {
-			screenDto = this.convertor.convertOriginalToDto(screen); 
+			screenDto = this.convertor.convertOriginalToDto(screen);
 			
-			if(screenDto.getMovieId() != null && this.movieProxy.getMovieById(screenDto.getMovieId()).getStatusCode() == HttpStatus.OK){
+			if(screenDto.getMovieId() != null) {
 				//Fetching movie details from Movie MS & setting to the ScreenDetailDto before attaching to the list
 				MovieDetailDto movieDto = this.movieProxy.getMovieById(screenDto.getMovieId()).getBody();
-				if(movieDto != null)
-					screenDto.setMovieDetail(movieDto);
+				screenDto.setMovieDetail(movieDto);
 			}
-				 
+				
 		}
 		
 		return screenDto;
@@ -70,7 +67,7 @@ public class ScreenServiceImpl implements ScreenService{
 			screen.setScreenAlive(dto.isScreenAlive());
 			screen.setScreenName(dto.getScreenName());
 			screen.setScreenSize(dto.getScreenSize());
-			screen.setShowAllocationDate(new Date(System.currentTimeMillis()));
+			screen.setShowAllocationDate(dto.getShowAllocationDate());
 			screen.setShowStartDate(dto.getShowStartDate());
 			screen.setShowEndDate(dto.getShowEndDate());
 			screen.setTotalSeat(dto.getTotalSeat());
@@ -81,12 +78,9 @@ public class ScreenServiceImpl implements ScreenService{
 		
 		if(screen != null) {
 			screenDto = this.convertor.convertOriginalToDto(screen);
-			if(screenDto.getMovieId() != null && this.movieProxy.getMovieById(screenDto.getMovieId()).getStatusCode() == HttpStatus.OK){
-				//Fetching movie details from Movie MS & setting to the ScreenDetailDto before attaching to the list
-				MovieDetailDto movieDto = this.movieProxy.getMovieById(screenDto.getMovieId()).getBody();
-				if(movieDto != null)
-					screenDto.setMovieDetail(movieDto);
-			}
+			//Fetching movie details from Movie MS & setting to the ScreenDetailDto before attaching to the list
+			MovieDetailDto movieDto = this.movieProxy.getMovieById(screenDto.getMovieId()).getBody();
+			screenDto.setMovieDetail(movieDto);
 		}
 		
 		return screenDto;
@@ -136,11 +130,11 @@ public class ScreenServiceImpl implements ScreenService{
 		this.repository.findAllByMultiplexId(mPlexId).forEach(
 					(screen) -> {
 						ScreenDetailDto dto = this.convertor.convertOriginalToDto(screen);
-						if(dto != null && (dto.getMovieId() != null && dto.getMovieId().length()>0)) {
-							//Fetching movie details from Movie MS & setting to the ScreenDetailDto before attaching to the list
-							MovieDetailDto movieDto = this.movieProxy.getMovieById(dto.getMovieId()).getBody();
-							dto.setMovieDetail(movieDto);
-						}
+						
+						//Fetching movie details from Movie MS & setting to the ScreenDetailDto before attaching to the list
+						MovieDetailDto movieDto = this.movieProxy.getMovieById(dto.getMovieId()).getBody();
+						dto.setMovieDetail(movieDto);
+						
 						dtoList.add(dto);
 					}
 				);
@@ -158,14 +152,9 @@ public class ScreenServiceImpl implements ScreenService{
 		
 		if(screen != null) {
 			dto = this.convertor.convertOriginalToDto(screen);
-			if(dto.getMovieId() != null) {
-				//Fetching movie details from Movie MS & setting to the ScreenDetailDto before attaching to the list
-				 
-				MovieDetailDto movieDto = this.movieProxy.getMovieById(dto.getMovieId()).getBody(); 
-				
-				if(movieDto!=null)
-					dto.setMovieDetail(movieDto);
-			}
+			//Fetching movie details from Movie MS & setting to the ScreenDetailDto before attaching to the list
+			MovieDetailDto movieDto = this.movieProxy.getMovieById(dto.getMovieId()).getBody();
+			dto.setMovieDetail(movieDto);
 		}
 		
 		return dto;

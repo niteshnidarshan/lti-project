@@ -42,10 +42,7 @@ import { MovieEditDialogComponent } from './components/management/movie/movie-ed
 import { FileUploadComponent } from './file-upload/file-upload/file-upload.component';
 import { MultiplexEntryComponent } from './components/management/multiplex/multiplex-entry/multiplex-entry.component';
 import { ScreenComponent } from './components/management/multiplex/screen/screen.component';
-import { AllocatMovieComponent } from './components/management/multiplex/screen/allocat-movie/allocat-movie.component';
-import { ConfirmMessageDialogComponent } from './components/utility-components/dialogs/confirm-message-dialog/confirm-message-dialog.component';
-import { UserAdminDialogComponent } from './components/management/user/user-admin-dialog/user-admin-dialog.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,10 +60,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MovieEditDialogComponent,
     FileUploadComponent,
     MultiplexEntryComponent,
-    ScreenComponent,
-    AllocatMovieComponent,
-    ConfirmMessageDialogComponent,
-    UserAdminDialogComponent 
+    ScreenComponent 
   ],
   imports: [
     BrowserModule,
@@ -97,8 +91,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatProgressBarModule,
     MatNativeDateModule, 
     MatRippleModule,
-    MatRadioModule,
-    MatAutocompleteModule
+    MatRadioModule
   ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
   bootstrap: [AppComponent]

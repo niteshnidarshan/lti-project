@@ -8,41 +8,39 @@
         <div class="col-md-12">&nbsp;</div>
         <div class="col-md-6">
             <mat-card-title>First Name</mat-card-title>
-            <mat-card-subtitle>{{(userData != undefined)?userData.firstName:""}}</mat-card-subtitle>
+            <mat-card-subtitle>{{userData.firstName}}</mat-card-subtitle>
         </div>
         <div class="col-md-6">
             <mat-card-title>Last Name</mat-card-title>
-            <mat-card-subtitle>{{(userData != undefined)?userData.lastName:""}}</mat-card-subtitle>
+            <mat-card-subtitle>{{userData.lastName}}</mat-card-subtitle>
         </div>
           
         <div class="col-md-6">
             <mat-card-title>Gender</mat-card-title>
-            <mat-card-subtitle>{{(userData != undefined)?userData.gender:""}}</mat-card-subtitle>
+            <mat-card-subtitle>{{userData.gender}}</mat-card-subtitle>
         </div>
         <div class="col-md-6">
             <mat-card-title>Date of Birth</mat-card-title>
-            <mat-card-subtitle>{{(userData != undefined)?(userData.dob | date: 'fullDate'):""}}</mat-card-subtitle>
+            <mat-card-subtitle>{{userData.dob | date: 'fullDate'}}</mat-card-subtitle>
         </div> 
 
 
         <div class="col-md-6">
             <mat-card-title>Email</mat-card-title>
-            <mat-card-subtitle>{{(userData != undefined)?userData.email:""}}</mat-card-subtitle>
+            <mat-card-subtitle>{{userData.email}}</mat-card-subtitle>
         </div> 
         <div class="col-md-6">
             <mat-card-title>Mobile</mat-card-title>
-            <mat-card-subtitle>{{(userData != undefined)?userData.mobile:""}}</mat-card-subtitle>
+            <mat-card-subtitle>{{userData.mobile}}</mat-card-subtitle>
         </div>
           
         <div class="col-md-12">
             <mat-card-title>Location</mat-card-title> 
-            <mat-card-subtitle>{{(userData != undefined)?userData.location:""}}</mat-card-subtitle>
+            <mat-card-subtitle>{{userData.location}}</mat-card-subtitle>
         </div>
 
         
-        <br>
-        <hr style="width: 100%; background-color: rgb(3, 175, 243);">
-        <br>
+        <hr>
           
         <div class="row col-md-12"  style="align-content: left;">
             <span matTooltip="Edit Profile">

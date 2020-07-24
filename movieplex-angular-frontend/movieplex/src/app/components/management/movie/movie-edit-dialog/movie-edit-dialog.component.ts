@@ -139,7 +139,6 @@ public close(value) {
   this.movieDialogRef.close(value);
 }
 submitImage(movieId: string) {
-  //To save image on server
   this.movieService.uploadPoster(toFormData(this.movieEditForm.value), movieId).pipe(
     uploadProgress(progress => (this.percentDone = progress)),
     toResponseBody()

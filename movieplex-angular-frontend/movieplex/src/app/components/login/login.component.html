@@ -1,33 +1,31 @@
 <div class="container"> 
-        
-        <div class="row col-md-12"> 
-            
+    <div class="row mat-elevation-z0" style="height: auto; margin-top: 10px;">
+        <div class="col-md-12"> 
             <mat-card class="card">
-                <mat-card class="header"> 
-                    <mat-card-title>MoviePlex Login</mat-card-title>  
-               </mat-card> 
-               <div class="col-md-12">&nbsp;</div> 
+                <mat-card-header>
+                <mat-card-title>Login</mat-card-title>
+                <mat-card-subtitle> </mat-card-subtitle>
+                </mat-card-header>
+                 
                 <!--Post Article stats-->
                 <mat-card-content>
-                 
+                <mat-card-title></mat-card-title>  
                 <form [formGroup]="loginFormGroup" (ngSubmit)="doLogin()" style="padding:5px;">
                         <p>
-                            <mat-form-field class="login-width" appearance="outline">
+                            <mat-form-field class="login-width">
                                 <mat-label>Email</mat-label>
-                                <mat-icon color="accent" matPrefix >email</mat-icon>
-                                <input matInput [type]="email" placeholder="Ex: abc@xyz.com"  [formControl] = "email"/>
+                                <input matInput [formControl] = "email" placeholder="Ex: abc@xyz.com"> 
                                 <mat-error *ngIf="loginFormGroup.controls['email'].hasError('required')">Email required!</mat-error>
                                 <mat-error *ngIf="loginFormGroup.controls['email'].hasError('email')">
                                     Invalid email!
                                 </mat-error>
-                                
                             </mat-form-field> 
                         </p>
                         <p>
-                            <mat-form-field class="login-width" appearance="outline">
+                            <mat-form-field class="login-width">
                                 <mat-label>Password</mat-label>
                                 <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="password"/>
-                                <mat-icon color="accent" matPrefix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 <mat-error *ngIf="loginFormGroup.controls['password'].hasError('required')">Password required!</mat-error>
                             </mat-form-field>
                         </p>
@@ -47,6 +45,6 @@
                     
                 </mat-card-actions>  
             </mat-card>
-        </div> 
-     
+        </div>
+    </div> 
 </div> 

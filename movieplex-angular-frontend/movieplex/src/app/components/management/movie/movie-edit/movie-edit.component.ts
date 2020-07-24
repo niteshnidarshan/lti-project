@@ -16,7 +16,7 @@ export class MovieEditComponent implements OnInit {
 
   movieList: any;
   displayedColumns: string[] = [
-    //'movieId',
+    'movieId',
     'name',
     'category',
     'casts',
@@ -24,12 +24,12 @@ export class MovieEditComponent implements OnInit {
     'director',
     'length',
     'language',
-    //'trailer',
-    //'posterURL',
+    'trailer',
+    'posterURL',
     'imdbRating',
     'userRating', 
     'releaseDate',
-    //'movieAddedBy',
+    'movieAddedBy',
     'isAlive',
     'movieCreationTimeStamp',
     'movieLastModifiedTimeStamp'  

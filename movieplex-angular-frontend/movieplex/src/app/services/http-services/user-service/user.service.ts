@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserModel } from 'src/app/models/UserModel';
 
 
 @Injectable({
@@ -11,7 +10,6 @@ export class UserService {
   //USER_URL: string = "http://localhost:7790/api/user";
   USER_URL: string = "http://localhost:8765/MoviePlex-User-Micro/api/user";
   userdata = [];
-  userModel: UserModel;
 
   constructor(private http: HttpClient) { }
 
@@ -21,10 +19,6 @@ export class UserService {
 
   doModifyUser(data:any){
     return this.http.put(this.USER_URL+"/modify-user", data);
-  }
-
-  getAllUserList(){
-    return this.http.get(this.USER_URL+"/get-all");
   }
 
   addUserData(data: any){
@@ -37,14 +31,6 @@ export class UserService {
 
   clearUserData(){
     this.userdata = [];
-  }
-
-  addUserModel(data: UserModel){  
-    this.userModel = data;
-  }
-
-  getUserModel(){
-    return this.userModel;
   }
 
 }

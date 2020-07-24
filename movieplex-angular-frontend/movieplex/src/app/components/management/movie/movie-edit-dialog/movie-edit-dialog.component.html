@@ -7,7 +7,7 @@
             <mat-card class="header"> 
                  <mat-card-title>Update Movie</mat-card-title>  
             </mat-card> 
-         </div> 
+         </div>
          <div class="col-md-12">&nbsp; </div>
         <div class="col-md-6">
             
@@ -145,7 +145,7 @@
         </div> 
         <div class="col-md-12"  style="align-content: left;">
             <span matTooltip="Add Movie">
-            <button type="submit" mat-raised-button [disabled]="!(movieEditForm.dirty && movieEditForm.valid)">
+            <button type="submit" mat-raised-button [disabled]="!movieEditForm.valid">
             <mat-icon color="accent">update</mat-icon>
             <span>Update Movie</span>
             
