@@ -12,7 +12,7 @@ export class MovieEditDialogService {
 
   dialogRef: MatDialogRef<MovieEditDialogComponent>; 
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) { } 
 
   public open(options) {
     this.dialogRef = this.dialog.open(MovieEditDialogComponent, {    
@@ -21,7 +21,7 @@ export class MovieEditDialogService {
         message1: options.message1,
         message2: options.message2,
         cancelText: options.cancelText,
-        confirmText: options.confirmText
+        confirmText: options.confirmText 
       }
  });  
   }

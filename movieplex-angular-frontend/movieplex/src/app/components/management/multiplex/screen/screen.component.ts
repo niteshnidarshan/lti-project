@@ -48,11 +48,13 @@ export class ScreenComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder, private multiPlexService: MultiplexService, private dialogService: MessageDialogService, private confirmMessageDialog: ConfirmMessageDialogService, private allocateMovieDialog: AllocateMovieDialogService) {
+    
     this.validateForm();
     this.loadMultiplexes(sessionStorage.getItem("userId"));
+
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
   loadMultiplexes(userId: string){
@@ -163,6 +165,7 @@ export class ScreenComponent implements OnInit {
   }
 
   refreshList(){
+    this.loadMultiplexes(sessionStorage.getItem("userId"));
     this.loadData(this.selectedMultiplex);
   }
    
@@ -237,5 +240,5 @@ export class ScreenComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+ 
 }

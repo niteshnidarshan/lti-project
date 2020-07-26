@@ -41,6 +41,7 @@ public class MovieServiceImpl implements MovieService {
 		movie.setCasts(dto.getCasts());
 		movie.setCategory(dto.getCategory());
 		movie.setDirector(dto.getDirector());
+		movie.setDescription(dto.getDescription());
 		movie.setImdbRating(dto.getImdbRating());
 		movie.setIsAlive(dto.getIsAlive());
 		movie.setLanguage(dto.getLanguage());

@@ -29,6 +29,19 @@
             
         </div>
 
+        <div class="col-md-12">
+            <p>
+                <mat-form-field class="full-width" appearance="standard"> 
+                    <textarea matInput cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+                    cdkAutosizeMaxRows="2" 
+                    [formControl]="movieAddForm.controls['discription']"></textarea>
+                    <mat-label >Description ...</mat-label>
+                  </mat-form-field>
+
+            </p>
+        </div>
+
         <div class="col-md-12">   
             <p>
                 <mat-form-field class="text-full-width"  appearance="standard">

@@ -45,7 +45,11 @@ import { ScreenComponent } from './components/management/multiplex/screen/screen
 import { AllocatMovieComponent } from './components/management/multiplex/screen/allocat-movie/allocat-movie.component';
 import { ConfirmMessageDialogComponent } from './components/utility-components/dialogs/confirm-message-dialog/confirm-message-dialog.component';
 import { UserAdminDialogComponent } from './components/management/user/user-admin-dialog/user-admin-dialog.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { HomeTrailerComponent } from './components/home/home-trailer/home-trailer.component';
+import { SafePipe } from './pipes/url-safe/safe.pipe';
+import { ErrorComponent } from './components/error-page/error/error.component';
+import { LogOutComponent } from './components/log-out/log-out.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +70,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     ScreenComponent,
     AllocatMovieComponent,
     ConfirmMessageDialogComponent,
-    UserAdminDialogComponent 
+    UserAdminDialogComponent,
+    HomeTrailerComponent,
+    SafePipe,
+    ErrorComponent,
+    LogOutComponent 
   ],
   imports: [
     BrowserModule,

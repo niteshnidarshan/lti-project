@@ -106,6 +106,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>MoviePlex-User-Micro</finalName>
 	</build>
 
 </project>

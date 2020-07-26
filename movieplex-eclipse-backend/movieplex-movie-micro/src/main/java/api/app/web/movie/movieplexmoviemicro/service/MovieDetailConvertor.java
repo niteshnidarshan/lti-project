@@ -9,11 +9,11 @@ import api.app.web.movie.movieplexmoviemicro.dto.MovieDetailDto;
 public class MovieDetailConvertor {
 	
 	public MovieDetail convertDtoToOriginal(MovieDetailDto dto) {
-		return new MovieDetail(dto.getMovieId(), dto.getName(), dto.getCategory(), dto.getCasts(), dto.getProducer(), dto.getDirector(), dto.getLength(), dto.getLanguage(), dto.getTrailer(), dto.getPosterURL(), dto.getImdbRating(), dto.getUserRating(), dto.getReleaseDate(), dto.getMovieAddedBy(), dto.getIsAlive(), dto.getMovieCreationTimeStamp(), dto.getMovieLastModifiedTimeStamp());
+		return new MovieDetail(dto.getMovieId(), dto.getName(), dto.getCategory(), dto.getCasts(), dto.getProducer(), dto.getDirector(), dto.getDescription(), dto.getLength(), dto.getLanguage(), dto.getTrailer(), dto.getPosterURL(), dto.getImdbRating(), dto.getUserRating(), dto.getReleaseDate(), dto.getMovieAddedBy(), dto.getIsAlive(), dto.getMovieCreationTimeStamp(), dto.getMovieLastModifiedTimeStamp());
 	}
 	
 	public MovieDetailDto convertOriginalToDto(MovieDetail obj) {
-		return new MovieDetailDto(obj.getMovieId(), obj.getName(), obj.getCategory(), obj.getCasts(), obj.getProducer(), obj.getDirector(), obj.getLength(), obj.getLanguage(), obj.getTrailer(), obj.getPosterURL(), obj.getImdbRating(), obj.getUserRating(), obj.getReleaseDate(), obj.getMovieAddedBy(), obj.getIsAlive(), obj.getMovieCreationTimeStamp(), obj.getMovieLastModifiedTimeStamp());
+		return new MovieDetailDto(obj.getMovieId(), obj.getName(), obj.getCategory(), obj.getCasts(), obj.getProducer(), obj.getDirector(), obj.getDescription(), obj.getLength(), obj.getLanguage(), obj.getTrailer(), obj.getPosterURL(), obj.getImdbRating(), obj.getUserRating(), obj.getReleaseDate(), obj.getMovieAddedBy(), obj.getIsAlive(), obj.getMovieCreationTimeStamp(), obj.getMovieLastModifiedTimeStamp());
 	}
 
 }

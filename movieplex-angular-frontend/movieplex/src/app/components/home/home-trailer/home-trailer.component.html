@@ -1,0 +1,23 @@
+<div class="header">
+    <mat-card-subtitle>
+    <h3 mat-dialog-title>{{ data.title }}</h3>
+    </mat-card-subtitle>
+</div>
+<hr/>
+<div mat-dialog-content>
+    <!--<iframe width="560" height="315" src="{{data.message1}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>-->
+    <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/GODAlxW5Pes?autoplay=1">
+    </iframe>-->
+    <iframe width="560" height="315" [src]="data.message1 | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+</div>
+<hr/>
+<div mat-dialog-actions>
+    <!--
+    <button mat-raised-button (click)="cancel()">{{ data.cancelText }}</button>
+    <button class="btn" (click)="confirm()">{{ data.confirmText }}</button>
+    -->
+    <button mat-raised-button (click)="confirm()">Ok</button>
+</div> 
+ 

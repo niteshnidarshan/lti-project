@@ -6,6 +6,7 @@ export class MovieModel{
         public casts: string,
         public producer: string,
         public director: string,
+        public description: string,
         public length: string,
         public language: string,
         public trailer: string,

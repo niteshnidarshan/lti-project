@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class MessageDialogComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {
-    cancelText: string,
+    cancelText: string, 
     confirmText: string,
     message1: string,
     message2: string,

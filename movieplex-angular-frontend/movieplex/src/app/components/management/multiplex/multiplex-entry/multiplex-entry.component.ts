@@ -93,7 +93,7 @@ export class MultiplexEntryComponent implements OnInit {
     this.multiPlexService.getAllMultiplexOfUser(userId).subscribe(
       (result) => {
         this.multiplexList = result;  
-        
+         
         this.parseElement();
         this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
         this.dataSource.sort = this.sort; 

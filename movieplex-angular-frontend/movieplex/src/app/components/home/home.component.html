@@ -1,116 +1,94 @@
-<br>
-<br>
-<br>
-<br>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
+<div class="container">
+    <div class="col-md-12">
+        <mat-form-field class="search-text-full-width" appearance="outline">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search location, multiplex, movie ..." #input>
+            <mat-icon matPrefix color="accent">search&nbsp;</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="col-md-12">
+        <div class="table-container">
 
-<p>home works!</p><p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
+            <table mat-table [dataSource]="dataSource" matSort>
 
-<p>home works!</p>
-<p>home works!</p>
+                <ng-container matColumnDef="movieDetail">
 
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
+                    <th mat-header-cell *matHeaderCellDef style="display: none;">
+                        <!--<span class="header-text"> </span>-->
+                    </th>
 
-<p>home works!</p><p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
+                    <td mat-cell *matCellDef="let element" style=" padding: 5px;">
+                        
+                          
 
-<p>home works!</p>
-<p>home works!</p>
+                                    <mat-card class="card">
+                                        <mat-card-header> 
+                                          <mat-card-title>
+                                              <span>{{element.movieName}}</span>
+                                          </mat-card-title> 
+                                        </mat-card-header> 
+                                        <mat-card>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <img mat-card-image src='{{(element.posterURL != null)?""+"http://localhost:8765"+element.posterURL:" "}}'>
+                                                </div>
+                                                <div class="col-md-8">
+                                                <p>
+                                                    <!--Details-->
+                                                    <span>
+                                                        <mat-card-subtitle>
+                                                            <h2>{{element.multiplexName}}</h2>
+                                                               <h3>{{element.location}}</h3>  
+                                                            <span><strong>Screen :</strong>&nbsp; {{element.screenName}} | Total seats:&nbsp; {{element.totalSeat}}</span>
+                                                             
+                                                        </mat-card-subtitle>
+                                                        <h4>
+                                                            <span><strong>Category :</strong>&nbsp; {{element.category}}</span>
+                                                            <br>
+                                                            <span><strong>Cast :</strong>&nbsp; {{element.casts}}</span>
+                                                            <br>
+                                                            <span><strong>Prodcucer :</strong>&nbsp; {{element.producer}}</span>
+                                                            <br> 
+                                                            <span><strong>Director :</strong>&nbsp; {{element.director}}</span>
+                                                        </h4>
+                                                        <div style="height: 60px; overflow-y: auto;">
+                                                            <article><strong>In brief :</strong> &nbsp;{{element.description}}</article>
+                                                        </div>
 
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
+                                                        
 
-<p>home works!</p><p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
+                                                    </span>
+                                                
+                                                    
+                                                
+                                                    
+                                                </p> 
+                                                </div>
+                                            </div>
+                                        </mat-card>
+                                        <mat-card-actions>
+                                            <span style="color: #ff4081;"><strong>Releases on : </strong>&nbsp; {{element.releaseDate | date: 'fullDate'}}</span>
+                                          <!--<button mat-button>LIKE</button>
+                                          <button mat-button>SHARE</button>-->
+                                            <span style="color: #ff4081; position: absolute; right: 25px;"><strong>IMDB Rating : </strong>&nbsp;{{element.imdbRating}}</span>
+                                        </mat-card-actions>
+                                      </mat-card>  
+ 
+                    
 
-<p>home works!</p>
-<p>home works!</p>
+                </td>
+ 
+                </ng-container>
 
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
 
-<p>home works!</p><p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p><p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p><p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p><p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p>
-<p>home works!</p>
+                <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

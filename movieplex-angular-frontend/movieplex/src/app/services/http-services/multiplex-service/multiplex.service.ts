@@ -29,6 +29,10 @@ export class MultiplexService {
     return this.httpClient.get(this.SCREEN_URL+"/get/all/"+multiplexId);
   }
 
+  getAllMultiplexesWithScreens(){
+    return this.httpClient.get(this.MPLEX_URL+"/get-home-page");
+  }
+
   addScreen(data: ScreenModel){
     return this.httpClient.post(this.SCREEN_URL+"/add",data);
   }

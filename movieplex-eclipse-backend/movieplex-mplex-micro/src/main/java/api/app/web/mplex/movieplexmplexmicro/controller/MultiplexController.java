@@ -1,6 +1,7 @@
 package api.app.web.mplex.movieplexmplexmicro.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -18,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import api.app.web.mplex.movieplexmplexmicro.document.MPlexDetail;
+import api.app.web.mplex.movieplexmplexmicro.dto.HomePageDto;
 import api.app.web.mplex.movieplexmplexmicro.dto.MPlexDetailDto;
+import api.app.web.mplex.movieplexmplexmicro.dto.MovieDetailDto;
 import api.app.web.mplex.movieplexmplexmicro.dto.MultiplexExceptionDto;
 import api.app.web.mplex.movieplexmplexmicro.dto.ScreenDetailDto;
 import api.app.web.mplex.movieplexmplexmicro.exception.CommonException;
@@ -173,6 +177,77 @@ public class MultiplexController {
 		
 		ResponseEntity<List<MPlexDetailDto>> response = new ResponseEntity<List<MPlexDetailDto>>(dtoList, HttpStatus.OK);
 		
+		return response;
+		
+	}
+	
+	@GetMapping("/get-home-page")
+	public ResponseEntity<List<HomePageDto>> getConetents(){
+		/**
+		 *  To show home page with search list
+		 */
+		
+		
+		List<HomePageDto> homePageList = new ArrayList<>();
+		
+		List<MPlexDetailDto> mPlexList = this.service.getAllMPlex(); //getting all multiplex list with screens and movies
+		 
+		
+		mPlexList.forEach(
+					
+					(mPlex) -> {
+						
+						List<ScreenDetailDto> screenList = mPlex.getScreenDetailList();
+						if(screenList != null && screenList.size()>0) {
+							screenList.forEach(
+										
+										(screen) -> {
+											MovieDetailDto movie = screen.getMovieDetail();
+											
+											if(movie != null) {
+												HomePageDto homePage = new HomePageDto();
+												
+												//Multiplex details
+												homePage.setMultiplexId(mPlex.getMultiplexId());
+												homePage.setMultiplexName(mPlex.getName());
+												homePage.setLocation(mPlex.getLocation());
+												
+												//Screen Details 
+												homePage.setScreenId(screen.getScreenId());
+												homePage.setScreenSize(screen.getScreenSize());
+												homePage.setScreenName(screen.getScreenName());
+												homePage.setTotalSeat(screen.getTotalSeat());
+												homePage.setShowEndDate(screen.getShowEndDate());
+												homePage.setShowStartDate(screen.getShowStartDate());
+												
+												//Movie Details 
+												homePage.setMovieId(movie.getMovieId());
+												homePage.setMovieName(movie.getName());
+												String categories = (movie.getCategory() != null)?movie.getCategory().trim().replace(" ", " | "):movie.getCategory();
+												homePage.setCategory(categories);
+												homePage.setCasts(movie.getCasts());
+												homePage.setProducer(movie.getProducer());
+												homePage.setDirector(movie.getDirector());
+												homePage.setDescription(movie.getDescription());
+												homePage.setLength(movie.getLength());
+												homePage.setLanguage(movie.getLanguage());
+												homePage.setTrailer(movie.getTrailer());
+												homePage.setPosterURL(movie.getPosterURL());
+												homePage.setImdbRating(movie.getImdbRating());
+												homePage.setUserRating(movie.getUserRating());
+												homePage.setReleaseDate(movie.getReleaseDate());
+												
+												homePageList.add(homePage);
+											}
+										}
+									
+									);
+						}
+					}
+				
+				); 
+		
+		ResponseEntity<List<HomePageDto>> response = new ResponseEntity<List<HomePageDto>>(homePageList, HttpStatus.OK);
 		return response;
 		
 	}

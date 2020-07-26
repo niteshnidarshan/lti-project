@@ -26,6 +26,7 @@ public class MovieDetail {
 	private String casts;
 	private String producer;
 	private String director;
+	private String description;
 	private Double length;
 	private String language;
 	private String trailer;

@@ -73,13 +73,14 @@ export class MovieEditDialogComponent implements OnInit {
 
     //To Show Poster 
     this.currentPosterUrl = this.movieReqData[0].posterURL; 
-
+    
     this.movieEditForm = this.formBuilder.group({
       "name": new FormControl(this.movieReqData[0].name,Validators.required),
       "category": new FormControl(movieCategories),
       "casts": new FormControl(this.movieReqData[0].casts),
       "producer": new FormControl(this.movieReqData[0].producer),
       "director": new FormControl(this.movieReqData[0].director), 
+      "description": new FormControl(this.movieReqData[0].description),
       "length": new FormControl(this.movieReqData[0].length),
       "language": new FormControl(this.movieReqData[0].language), 
       "trailer": new FormControl(this.movieReqData[0].trailer),
@@ -107,6 +108,7 @@ export class MovieEditDialogComponent implements OnInit {
       this.movieEditForm.controls['casts'].value,
       this.movieEditForm.controls['producer'].value,
       this.movieEditForm.controls['director'].value,
+      this.movieEditForm.controls['description'].value,
       this.movieEditForm.controls['length'].value,
       this.movieEditForm.controls['language'].value,
       this.movieEditForm.controls['trailer'].value,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './services/utilty-services/security/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
   title = 'movieplex';
+
+  constructor(public authService: AuthenticationService){}
+  
+  
   menuFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {

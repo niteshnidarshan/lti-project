@@ -5,10 +5,12 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu" class="sidemenu"> 
-    <button mat-menu-item routerLink="profile" routerLinkActive="active">
-      <mat-icon color="accent">account_box</mat-icon>
-      <span>Profile</span>
-    </button>
+    <span *ngIf="authService.isUserLoggedIn()">
+      <button mat-menu-item routerLink="profile" routerLinkActive="active">
+        <mat-icon color="accent">account_box</mat-icon>
+        <span>Profile</span>
+      </button>
+    </span>
     <button mat-menu-item routerLink="home" routerLinkActive="active">
       <mat-icon color="accent">home</mat-icon>
       <span>Home</span>
@@ -17,14 +19,16 @@
       <mat-icon color="accent">message</mat-icon>
       <span>Message</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item disabled>
       <mat-icon color="accent">notifications</mat-icon>
       <span>Notification</span>
     </button> 
-    <button mat-menu-item [matMenuTriggerFor]="management">
-      <mat-icon color="accent">settings</mat-icon>
-      <span>Management</span>
-    </button>
+    <span *ngIf="authService.isUserLoggedIn()">
+      <button mat-menu-item [matMenuTriggerFor]="management">
+        <mat-icon color="accent">settings</mat-icon>
+        <span>Management</span>
+      </button>
+    </span>
 
       <mat-menu #management="matMenu"> 
         <button mat-menu-item routerLink="movie" routerLinkActive="active">
@@ -35,25 +39,31 @@
           <mat-icon color="accent">theaters</mat-icon>
           <span>Multiplex</span>
         </button>
-        <button mat-menu-item routerLink="user" routerLinkActive="active">
-          <mat-icon color="accent">people</mat-icon>
-          <span>User</span>
-        </button>
+        <span *ngIf="authService.isUserLoggedIn() && authService.isUserSuperUser()">
+          <button mat-menu-item routerLink="user" routerLinkActive="active">
+            <mat-icon color="accent">people</mat-icon>
+            <span>User</span>
+          </button>
+        </span>
       </mat-menu>
-    <button mat-menu-item routerLink="#" routerLinkActive="active">
-      <mat-icon color="accent">logout</mat-icon>
-      <span>Logout</span>
-    </button>
+    <span *ngIf="authService.isUserLoggedIn()">
+      <button mat-menu-item routerLink="logout" routerLinkActive="active">
+        <mat-icon color="accent">logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </span>
   </mat-menu>
   
   <button mat-button routerLink="home" routerLinkActive="active">
     <mat-icon color="accent">home</mat-icon> 
     <span>Home</span>
   </button>
-  <button mat-button routerLink="login" routerLinkActive="active">
-    <mat-icon color="accent">login</mat-icon>
-    <span>Login</span>
-  </button>
+  <span *ngIf="!authService.isUserLoggedIn()">
+    <button mat-button routerLink="login" routerLinkActive="active">
+      <mat-icon color="accent">login</mat-icon>
+      <span>Login</span>
+    </button>
+  </span>
   <button mat-button routerLink="register" routerLinkActive="active">
     <mat-icon color="accent">person_add</mat-icon>
     <span>Register</span>
@@ -62,7 +72,7 @@
     <mat-icon color="accent">mode_edit</mat-icon>
     <span>Post</span>
   </button>
-  <mat-form-field appearance="outline" class="full-width" color="accent" style="position: absolute; right: 25px; top: 1px; color: rgb(118, 118, 118);">
+  <mat-form-field appearance="outline" class="full-width" color="accent" style="position: absolute; right: 25px; top: 1px; color: rgb(118, 118, 118); display: none;">
     <mat-label color="accent">Search ...</mat-label>
     <mat-icon matPrefix color="accent">search&nbsp;</mat-icon>
     <input type="search" matInput placeholder="">
@@ -70,7 +80,7 @@
 
   <span>
     <mat-label class="lbl"> 
-      <mat-icon color="accent">grain</mat-icon>
+      <mat-icon matSuffix color="accent">grain</mat-icon>
       MoviePlex!
     </mat-label>
   </span>
