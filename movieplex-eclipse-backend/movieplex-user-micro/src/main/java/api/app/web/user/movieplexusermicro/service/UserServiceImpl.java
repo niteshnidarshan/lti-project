@@ -180,6 +180,21 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	@Override
+	public UserDetailDto getUserByEmail(String email) {
+		UserDetailDto dto = null;
+		
+		UserDetail user = this.repository.findByEmail(email);
+		
+		if(user != null) {
+			dto = this.convertor.convertOriginalToDto(user);
+		}
+		
+		return dto;
+	}
+	
+	
+
 	
 	
 }

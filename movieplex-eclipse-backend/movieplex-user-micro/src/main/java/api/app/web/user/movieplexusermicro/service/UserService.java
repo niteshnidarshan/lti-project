@@ -14,5 +14,6 @@ public interface UserService {
 	public UserDetailDto editProfile(UserDetail userDetail);
 	public UserDetailDto getUserDetail(String userId);
 	public List<UserDetailDto> getAllUserDetail();
-	public boolean checkEmailAlreadyAvailable(String email);
+	public boolean checkEmailAlreadyAvailable(String email); 
+	public UserDetailDto getUserByEmail(String email);
 }

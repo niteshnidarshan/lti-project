@@ -85,6 +85,21 @@ public class UserController {
 		return response;
 	}
 	
+	@GetMapping("/email/{email}")
+	public ResponseEntity<UserDetailDto> getUserByEmail(@PathVariable("email") String email){
+		
+		if(email == null) {
+			throw new CommonException("Invalid email address!");
+		}
+		
+		UserDetailDto dto = this.service.getUserByEmail(email);
+		
+		ResponseEntity<UserDetailDto> response = new ResponseEntity<UserDetailDto>(dto, HttpStatus.OK);
+		
+		return response;
+		
+	}
+	
 	@PutMapping(path = "/modify-user", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserDetailDto> updateProfile(@RequestBody UserDetailDto userDto){
 		
