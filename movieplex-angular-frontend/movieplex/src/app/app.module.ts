@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,6 +50,7 @@ import { HomeTrailerComponent } from './components/home/home-trailer/home-traile
 import { SafePipe } from './pipes/url-safe/safe.pipe';
 import { ErrorComponent } from './components/error-page/error/error.component';
 import { LogOutComponent } from './components/log-out/log-out.component'; 
+import { AuthInterceptor } from './services/utilty-services/security/AuthInterceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +109,17 @@ import { LogOutComponent } from './components/log-out/log-out.component';
     MatRadioModule,
     MatAutocompleteModule
   ],
-  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
+  providers: [
+    { 
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
+      useValue: { appearance: 'fill' } 
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

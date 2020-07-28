@@ -1,25 +1,23 @@
 package app.api.ag.movieplexapigateway.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 
-import app.api.ag.movieplexapigateway.dto.LoginDto;
 import app.api.ag.movieplexapigateway.dto.UserDetailDto;
-import app.api.ag.movieplexapigateway.feignproxy.UserFeignProxy;
+import app.api.ag.movieplexapigateway.feignproxy.UserAuthFeignProxy;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService{
 	
 	@Autowired
-	private UserFeignProxy proxy;
+	private UserAuthFeignProxy proxy;
 	
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
@@ -38,24 +36,32 @@ public class JwtUserDetailsService implements UserDetailsService{
 		if (user == null) {
 			throw new UsernameNotFoundException("User not found with email: " + email);
 		}
+		 
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
+		
 	}
 	
-	public UserDetailDto login(LoginDto loginDto) {
+	/*public UserDetailDto login(LoginDto loginDto) {
 		
 		BindingResult validator = null;
 		
 		UserDetailDto userDetailDto = this.proxy.login(loginDto, validator).getBody();
 		
 		return userDetailDto; 
-	}
+	}*/
 	
-	public UserDetailDto save(UserDetailDto dto) {
-		 
+	public UserDetailDto save(UserDetailDto dto) throws Exception {
+		UserDetailDto userDetailDto = null; 
+		try {
 		dto.setPassword(bcryptEncoder.encode(dto.getPassword())); //setting encrypted password to dto 
 		
-		UserDetailDto userDetailDto = this.proxy.register(dto).getBody(); //Register user request with feign proxy with encrypted password value.
-		
+		userDetailDto = this.proxy.register(dto).getBody(); //Register user request with feign proxy with encrypted password value.
+		}catch(Exception ex) {
+			System.out.println("error is = "+ex);
+			throw ex;
+		}
+		//Object userDetailDto = this.proxy.register(dto).getStatusCode();
+		//System.out.println("Seeeehere ################## "+userDetailDto);
 		return userDetailDto;
 		
 		/*DAOUser newUser = new DAOUser();

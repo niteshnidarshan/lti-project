@@ -46,7 +46,7 @@ export class UserComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private userService: UserService, private userAdminDialog: UserAdminDialogService) { 
-    this.loadData();
+    //this.loadData();
      
     
   }
@@ -54,6 +54,11 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     
   } 
+
+  ngAfterViewInit(){ 
+    this.loadData(); 
+  }
+
   /* code for data list
   autoCom(){
     alert(this.options);
@@ -73,13 +78,18 @@ export class UserComponent implements OnInit {
  */
 
   loadData(){
-    this.userService.getAllUserList().subscribe((result) => {
+    this.userService.getAllUserList().subscribe(
+      (result) => {
       this.usersList = result;   
       this.parseElement();
       this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
       this.dataSource.sort = this.sort; 
       this.dataSource.paginator = this.paginator;
-    });
+    },
+    (err) => {
+      alert(err.error.message);
+    } 
+    );
     
   }
 

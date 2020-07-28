@@ -7,11 +7,12 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterService {
 
   //USER_URL = "http://localhost:7790/api/user";
-  USER_URL = "http://localhost:8765/MoviePlex-User-Micro/api/user";
-
+  //USER_URL = "http://localhost:8765/MoviePlex-User-Micro/api/user";
+  USER_URL = "http://localhost:8765";
+  
   constructor(private http: HttpClient) { }
 
   registerUser(data: any){
-    return this.http.post(this.USER_URL+"/register", data);
+    return this.http.post(this.USER_URL+"/register-user", data);
   }
 }

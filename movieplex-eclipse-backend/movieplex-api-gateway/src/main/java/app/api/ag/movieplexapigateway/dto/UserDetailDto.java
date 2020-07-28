@@ -1,9 +1,7 @@
 package app.api.ag.movieplexapigateway.dto;
 
 import java.util.Date;
-import java.util.List;
-
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List; 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -17,8 +15,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@Document
+@ToString 
 public class UserDetailDto {
 	
 	private String userId;

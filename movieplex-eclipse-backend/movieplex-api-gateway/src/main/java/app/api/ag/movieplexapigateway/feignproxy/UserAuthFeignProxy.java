@@ -14,15 +14,15 @@ import app.api.ag.movieplexapigateway.dto.UserDetailDto;
 
 @FeignClient(name = "api-gateway")
 @RibbonClient(name = "MoviePlex-User-Micro")
-public interface UserFeignProxy {
+public interface UserAuthFeignProxy {
 
-	@PostMapping("/register")
+	@PostMapping("/MoviePlex-User-Micro/api/user/register")
 	public ResponseEntity<UserDetailDto> register(@RequestBody UserDetailDto dto);
 	
-	@PostMapping("/login")
-	public ResponseEntity<UserDetailDto> login(@RequestBody LoginDto loginDto, BindingResult validator);
+	//@PostMapping("/login")
+	//public ResponseEntity<UserDetailDto> login(@RequestBody LoginDto loginDto, BindingResult validator);
 	
-	@GetMapping("/email/{email}")
+	@GetMapping("/MoviePlex-User-Micro/api/user/email/{email}")
 	public ResponseEntity<UserDetailDto> getUserByEmail(@PathVariable("email") String email);
 	
 }

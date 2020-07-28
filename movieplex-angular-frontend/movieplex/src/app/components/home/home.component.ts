@@ -7,6 +7,7 @@ import { ScreenModel } from 'src/app/models/ScreenModel';
 import { MovieModel } from 'src/app/models/MovieModel';
 import { HomeDataModel } from 'src/app/models/HomeDataModel';
 import { HomeTrailerService } from 'src/app/services/http-services/home-trailer-service/home-trailer.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ import { HomeTrailerService } from 'src/app/services/http-services/home-trailer-
 export class HomeComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = [ 
     'movieDetail' 
@@ -27,11 +29,15 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private multiPlexService: MultiplexService, private trailerDialog: HomeTrailerService) { 
-    this.loadData();
+    //this.loadData(); 
   }
 
   ngOnInit(): void { 
     
+  }
+
+  ngAfterViewInit(){ 
+    this.loadData(); 
   }
 
   loadData(){ 

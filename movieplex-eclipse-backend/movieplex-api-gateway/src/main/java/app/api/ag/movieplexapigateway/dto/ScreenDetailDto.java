@@ -1,14 +1,10 @@
 package app.api.ag.movieplexapigateway.dto;
 
-import java.util.Date;
-
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import java.util.Date; 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-@Document
+ 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

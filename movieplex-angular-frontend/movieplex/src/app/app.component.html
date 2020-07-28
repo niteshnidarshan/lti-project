@@ -31,11 +31,11 @@
     </span>
 
       <mat-menu #management="matMenu"> 
-        <button mat-menu-item routerLink="movie" routerLinkActive="active">
+        <button mat-menu-item *ngIf="authService.isUserLoggedIn() && (authService.isUserSuperUser() || authService.isUserAdmin())" routerLink="movie" routerLinkActive="active">
           <mat-icon color="accent">movie</mat-icon>
           <span>Movie</span>
         </button>
-        <button mat-menu-item routerLink="multiplex" routerLinkActive="active">
+        <button mat-menu-item *ngIf="authService.isUserLoggedIn() && (authService.isUserSuperUser() || authService.isUserAdmin())" routerLink="multiplex" routerLinkActive="active">
           <mat-icon color="accent">theaters</mat-icon>
           <span>Multiplex</span>
         </button>
