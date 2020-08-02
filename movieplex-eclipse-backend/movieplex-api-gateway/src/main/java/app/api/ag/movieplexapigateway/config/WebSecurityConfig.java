@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		// We don't need CSRF for this example
 		httpSecurity.csrf().disable()
 				// dont authenticate this particular request
-			//.authorizeRequests().antMatchers("/authenticate").permitAll().
+			.authorizeRequests().antMatchers("/authenticate").permitAll().
 				//and()
 				//.authorizeRequests().antMatchers("/MoviePlex-User-Micro/api/user/**").authenticated().
 				
@@ -65,14 +65,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				
 				//anyRequest().authenticated().and().    //It will authenticate all request
 				
-			//and().
+			and().
 				// make sure we use stateless session; session won't be used to
 				// store user's state.
 		
-		.authorizeRequests().antMatchers("/authenticate", "/register-user", "/MoviePlex-User-Micro/api/user/email/**", "/MoviePlex-Multiplex-Micro/api/multiplex/**", "/MoviePlex-Screen-Micro/api/screen/**", "/MoviePlex-Movie-Micro/api/**").permitAll().
+		//.authorizeRequests().antMatchers("/authenticate", "/register-user", "/MoviePlex-User-Micro/api/user/email/**", "/MoviePlex-Multiplex-Micro/api/multiplex/**", "/MoviePlex-Screen-Micro/api/screen/**", "/MoviePlex-Movie-Micro/api/**").permitAll().
 		
 		// all other requests need to be authenticated
-		anyRequest().authenticated().and().
+		//anyRequest().authenticated().and().
 				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

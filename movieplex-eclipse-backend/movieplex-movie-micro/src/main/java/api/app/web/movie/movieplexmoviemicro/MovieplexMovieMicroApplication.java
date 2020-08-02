@@ -9,9 +9,9 @@ import api.app.web.movie.movieplexmoviemicro.configuration.FileStorageProperties
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableConfigurationProperties({
-	FileStorageProperties.class
-})
+//@EnableConfigurationProperties({
+//	FileStorageProperties.class
+//})
 public class MovieplexMovieMicroApplication {
 
 	public static void main(String[] args) {

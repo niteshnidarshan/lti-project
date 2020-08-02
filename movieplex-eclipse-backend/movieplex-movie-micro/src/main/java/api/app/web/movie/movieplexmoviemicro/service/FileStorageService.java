@@ -18,9 +18,14 @@ import org.springframework.web.multipart.MultipartFile;
 import api.app.web.movie.movieplexmoviemicro.configuration.FileStorageProperties;
 import api.app.web.movie.movieplexmoviemicro.exception.FileStorageException;
 import api.app.web.movie.movieplexmoviemicro.exception.MyFileNotFoundException;
-  
 
-@Service
+/**
+ * Belongs to file upload/ download process in local storage
+ * @author niteshnidarshan
+ *
+ */
+
+//@Service
 public class FileStorageService {
 	
 	private final Path fileStorageLocation;
