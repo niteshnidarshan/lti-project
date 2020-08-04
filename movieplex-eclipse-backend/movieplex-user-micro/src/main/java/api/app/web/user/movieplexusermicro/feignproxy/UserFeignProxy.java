@@ -12,7 +12,7 @@ import api.app.web.user.movieplexusermicro.dto.MPlexDetailDto;
 
 //@FeignClient(name = "MoviePlex-Multiplex-Micro")
 //@FeignClient(name = "api-gateway", url = "http://localhost:8765")
-@FeignClient(name = "api-gateway")
+@FeignClient(name = "api-gateway", url = "https://movieplex-ag.herokuapp.com/")
 @RibbonClient(name = "MoviePlex-Multiplex-Micro")
 public interface UserFeignProxy {
 

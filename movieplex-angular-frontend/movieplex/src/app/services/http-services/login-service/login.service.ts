@@ -11,8 +11,9 @@ export class LoginService {
 
   //LOGIN_URL: string = "http://localhost:7790/api/user";
   //LOGIN_URL: string = "http://localhost:8765/MoviePlex-User-Micro/api/user";
-
-  LOGIN_URL: string = "http://localhost:8765/authenticate";
+  
+  //LOGIN_URL: string = "http://localhost:8765/authenticate";
+  LOGIN_URL: string = "https://movieplex-ag.herokuapp.com/authenticate";
 
   constructor(private http: HttpClient) { }
 

@@ -10,9 +10,10 @@ import { AuthenticationService } from '../../utilty-services/security/authentica
   providedIn: 'root'
 })
 export class UserService {
-
+  
   //USER_URL: string = "http://localhost:7790/api/user";
-  USER_URL: string = "http://localhost:8765/MoviePlex-User-Micro/api/user";
+  //USER_URL: string = "http://localhost:8765/MoviePlex-User-Micro/api/user";
+  USER_URL: string = "https://movieplex-ag.herokuapp.com/MoviePlex-User-Micro/api/user";
   userdata = [];
   userModel: UserModel;
 

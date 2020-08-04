@@ -5,10 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RegisterService {
-
+  
   //USER_URL = "http://localhost:7790/api/user";
   //USER_URL = "http://localhost:8765/MoviePlex-User-Micro/api/user";
-  USER_URL = "http://localhost:8765";
+  //USER_URL = "http://localhost:8765";
+  USER_URL = "https://movieplex-ag.herokuapp.com";
   
   constructor(private http: HttpClient) { }
 

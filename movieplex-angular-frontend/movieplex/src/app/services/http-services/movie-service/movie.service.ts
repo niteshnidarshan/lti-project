@@ -6,9 +6,12 @@ import { MovieModel } from 'src/app/models/MovieModel';
   providedIn: 'root'
 })
 export class MovieService {
+  
+  //MOVIE_URL:string = "http://localhost:8765/MoviePlex-Movie-Micro/api/movie"; 
+  //MOVIE_UPLOAD_URL: string = "http://localhost:8765/MoviePlex-Movie-Micro/api/media/uploadMultipleFiles";  
 
-  MOVIE_URL:string = "http://localhost:8765/MoviePlex-Movie-Micro/api/movie"; 
-  MOVIE_UPLOAD_URL: string = "http://localhost:8765/MoviePlex-Movie-Micro/api/media/uploadMultipleFiles";  
+  MOVIE_URL:string = "https://movieplex-ag.herokuapp.com/MoviePlex-Movie-Micro/api/movie"; 
+  MOVIE_UPLOAD_URL: string = "https://movieplex-ag.herokuapp.com/MoviePlex-Movie-Micro/api/media/uploadMultipleFiles";  
 
   movieData: any[];
 

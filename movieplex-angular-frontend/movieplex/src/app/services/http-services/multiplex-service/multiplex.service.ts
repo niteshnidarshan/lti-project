@@ -9,9 +9,12 @@ import { ScreenModel } from 'src/app/models/ScreenModel';
 export class MultiplexService {
 
   screenData: any[];
+  
+  //MPLEX_URL:string = "http://localhost:8765/MoviePlex-Multiplex-Micro/api/multiplex"; 
+  //SCREEN_URL:string = "http://localhost:8765/MoviePlex-Screen-Micro/api/screen"; 
 
-  MPLEX_URL:string = "http://localhost:8765/MoviePlex-Multiplex-Micro/api/multiplex"; 
-  SCREEN_URL:string = "http://localhost:8765/MoviePlex-Screen-Micro/api/screen"; 
+  MPLEX_URL:string = "https://movieplex-ag.herokuapp.com/MoviePlex-Multiplex-Micro/api/multiplex"; 
+  SCREEN_URL:string = "https://movieplex-ag.herokuapp.com/MoviePlex-Screen-Micro/api/screen"; 
   
 
 

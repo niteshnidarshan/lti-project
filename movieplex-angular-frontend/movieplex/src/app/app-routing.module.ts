@@ -21,9 +21,9 @@ const routes: Routes = [
   {path:"multiplex", component:MultiplexComponent},
   {path:"movie", component:MovieComponent},
   {path:"profile", component:ProfileComponent},
-  {path:'', redirectTo:'/home', pathMatch:"full"}, //To set auto route
-  {path:"**", component:ErrorComponent}
-];
+  { path: '',   redirectTo: '/home', pathMatch: 'full' }, //To set auto route
+  {path:"**", component:ErrorComponent},
+]; 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

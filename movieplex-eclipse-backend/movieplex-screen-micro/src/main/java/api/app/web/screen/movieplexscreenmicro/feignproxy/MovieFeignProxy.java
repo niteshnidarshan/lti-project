@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import api.app.web.screen.movieplexscreenmicro.dto.MovieDetailDto;
 
 //@FeignClient(name = "MoviePlex-Movie-Micro")
-@FeignClient(name = "api-gateway")
+@FeignClient(name = "api-gateway", url = "https://movieplex-ag.herokuapp.com/")
 @RibbonClient(name = "MoviePlex-Movie-Micro")
 //@FeignClient(name="MoviePlex-Movie-Micro", url="http://localhost:8765")
 public interface MovieFeignProxy {
